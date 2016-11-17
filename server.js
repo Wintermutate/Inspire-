@@ -16,6 +16,7 @@ var application_controller = require('./controllers/application_controller');
 // instantiate our app
 var app = express();
 
+var PORT = process.env.PORT || 8080;
 // override POST to have DELETE and PUT
 app.use(methodOverride('_method'))
 
