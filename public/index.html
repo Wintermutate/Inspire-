@@ -17,6 +17,8 @@
 
     <link href="assets/css/style.css" rel="stylesheet">
 
+
+    <!-- Google -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="469846503364-vsarejtqsj18aatj4qjiorb39oiub1ht.apps.googleusercontent.com">
 
@@ -42,9 +44,7 @@
     <!-- LinkedIn -->
     <script type="text/javascript" src="//platform.linkedin.com/in.js">
         api_key:   77nx3dx4wvbsgy
-        onLoad:    onLinkedInLoad
         authorize: true
-        lang:      en_US
     </script>
 
 </head>
@@ -85,11 +85,6 @@
                         </div>
                         <div class="modal-body">
                             <p class="text-center">Some text in the Modal Body</p>
-
-
-                            
-
-
                         </div>
                         </div>
 
@@ -116,30 +111,16 @@
                             <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
                             <!-- LinkedIn -->
-                            <script type="in/Login"></script>
                             <script type="text/javascript">
-                                
-                                // Setup an event listener to make an API call once auth is complete
-                                function onLinkedInLoad() {
-                                    IN.Event.on(IN, "auth", getProfileData);
+                                function onLinkedInAuth()
+                                {
+                                  IN.API.Profile("me").result( function(me) {
+                                      var id = me.values[0].id;
+                                      // AJAX call to pass back id to your server
+                                    });
                                 }
-
-                                // Handle the successful return from the API call
-                                function onSuccess(data) {
-                                    console.log(data);
-                                }
-
-                                // Handle an error response from the API call
-                                function onError(error) {
-                                    console.log(error);
-                                }
-
-                                // Use the API call wrapper to request the member's basic profile data
-                                function getProfileData() {
-                                    IN.API.Raw("/people/~").result(onSuccess).error(onError);
-                                }
-
                             </script>
+                            <script type="IN/Login" data-onAuth="onLinkedInAuth"></script>
 
                         </div>
                     </div>
