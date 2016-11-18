@@ -256,9 +256,7 @@ footer p {
 .modal-body {
     padding: 2px 16px;
 }
-.modal-body label, .modal-body input {
-    margin-left: 150px;
-}
+
 
 .modal-footer {
     padding: 2px 16px;
