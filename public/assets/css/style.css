@@ -58,7 +58,7 @@ h1 {
     font-size: 12px
 }
 
-.navbar-custom .nav li a:active,
+/*.navbar-custom .nav li a:active,
 .navbar-custom .nav li a:focus,
 .navbar-custom .nav li a:hover {
     background-color: transparent;
@@ -68,7 +68,7 @@ h1 {
 .navbar-custom .navbar-toggle:active,
 .navbar-custom .navbar-toggle:focus {
     outline: 0
-}
+}*/
 
 .navbar-custom .navbar-brand {
     font-weight: 700
@@ -97,6 +97,10 @@ h1 {
         background: #000;
         border-bottom: 1px solid rgba(255, 255, 255, .3)
     }
+}
+
+#navigation,.navbar .navbar-default{
+  background-image: url("assets/images/gray-gradient.png");
 }
 
 .main {
@@ -133,6 +137,10 @@ h1 {
 
 .btn-default, .btn-lg, .btn-default a {
     background-color: #d3d3d3;
+    /*pop*/
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
 }
 
 .btn-default a {
@@ -141,6 +149,16 @@ h1 {
 
 .btn-lg {
     margin: 20px;
+    /*pop*/
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+/*pop*/
+.btn-lg:hover {
+    height: 60px;
+    width: 90px;
 }
 
 .btn-default:focus,
@@ -149,6 +167,9 @@ h1 {
     outline: 0;
     color: #fff;
     background: rgba(255, 255, 255, .1);
+    /*pop*/
+    height: 40px;
+    width: 75px;
 }
 
 .main .main-body #image {
@@ -184,7 +205,7 @@ h1 {
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 40%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -220,13 +241,19 @@ h1 {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #a9a9a9;
+    background-color: #525252;
     color: white;
 }
 
 .modal-body {
     padding: 2px 16px;
     color: #000000;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #525252;
+    color: white;
 }
 
 
