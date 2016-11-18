@@ -17,7 +17,6 @@
 
     <link href="assets/css/style.css" rel="stylesheet">
 
-
     <!-- Google -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="469846503364-vsarejtqsj18aatj4qjiorb39oiub1ht.apps.googleusercontent.com">
@@ -48,10 +47,12 @@
     </script>
 
 </head>
-
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- comments in lines 22 and 25 out just to save what it was before change -->
+<!-- <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"> -->
+<body id="page-top">
     <div class="row">
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <!-- <nav class="navbar navbar-custom navbar-fixed-top" role="navigation"> -->
+    <nav class="navbar navbar-custom" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -67,29 +68,47 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputUsername">Username</label>
-                        <input type="username" class="form-control" id="username" placeholder="Username">
+                        <input type="username" class="form-control-sm" id="username" placeholder="Username">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputPassword">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control-sm" id="password" placeholder="Password">
                     </div>
   
-                    <button type="submit" class="btn btn-default">Log In</button>
+                    <button type="submit" class="btn btn-default btn-sm">Log In</button>
+                    <!-- Trigger/Open The Modal -->
+                    <button type="signup" class="btn btn-default btn-sm"><a href="#" id="myBtn">Sign Up</a></button>
+
+                    <!-- The Modal -->
                     <div id="myModal" class="modal">
 
                     <!-- Modal content -->
                     <div class="modal-content">
                         <div class="modal-header">
-                        <span class="close">×</span>
-                        <h2 class="text-center">Sign Up</h2>
+                            <span class="close">×</span>
+                            <h2 class="text-center">Sign Up</h2>
                         </div>
                         <div class="modal-body">
-                            <p class="text-center">Some text in the Modal Body</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="text-center">Create Username</label>
+                                    <br>
+                                    <input type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="text-center">Create Password</label>
+                                    <br>
+                                    <input type="password" class="form-control text-center" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                            </form>
                         </div>
+                        <div class="modal-footer">
+                            <button type="creatingSignUp" class="btn btn-default btn-sm center-block" id="signin">Sign Up</button>
+                        
                         </div>
-
+                    <!-- end of modalstuff -->
                     </div>
-                    <button type="signup" class="btn btn-default"><a href="#" id="myBtn">Sign Up</a></button>
                 </form>
             </div>
         </div>
@@ -103,7 +122,7 @@
                         <div class="col-md-8 col-md-offset-2">
                             <h1 class="brand-heading">Name of App</h1>
                             <p class="quote">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
+                        
                             <!-- Facebook -->
                             <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 
@@ -145,8 +164,9 @@
             <p>Copyright &copy; Group Name 2016</p>
         </div>
     </footer> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="assets/javascript/app.js"></script>
     </body>
     </html>
