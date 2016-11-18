@@ -99,6 +99,10 @@ h1 {
     }
 }
 
+#navigation,.navbar .navbar-default{
+  background-image: url("assets/images/gray-gradient.png");
+}
+
 .main {
     display: table;
     height: auto;
