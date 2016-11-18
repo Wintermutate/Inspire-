@@ -98,9 +98,9 @@ h1 {
         border-bottom: 1px solid rgba(255, 255, 255, .3)
     }
 }
-
-#navigation,.navbar .navbar-default{
-  background-image: url("assets/images/gray-gradient.png");
+/*ombre affect*/
+.navbar-custom {
+  background-image: url("../images/gray-gradient.png");
 }
 
 .main {
@@ -159,6 +159,12 @@ h1 {
 .btn-lg:hover {
     height: 60px;
     width: 90px;
+}
+
+/*pop*/
+#inspire:hover {
+    height: 60px;
+    width: 155px;
 }
 
 .btn-default:focus,
