@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Name of App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="469846503364-vsarejtqsj18aatj4qjiorb39oiub1ht.apps.googleusercontent.com">
+
+    <!-- Facebook -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1824784101112300',
+          xfbml      : true,
+          version    : 'v2.6'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- LinkedIn -->
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+        api_key:   77nx3dx4wvbsgy
+        onLoad:    onLinkedInLoad
+        authorize: true
+        lang:      en_US
+    </script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div class="row">
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    Name of App
+                </a>
+            </div>
+
+
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputUsername">Username</label>
+                        <input type="username" class="form-control" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputPassword">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+  
+                    <button type="submit" class="btn btn-default">Log In</button>
+                    <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <span class="close">×</span>
+                        <h2 class="text-center">Sign Up</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center">Some text in the Modal Body</p>
+
+
+                            
+
+
+                        </div>
+                        </div>
+
+                    </div>
+                    <button type="signup" class="btn btn-default"><a href="#" id="myBtn">Sign Up</a></button>
+                </form>
+            </div>
+        </div>
+
+    </nav>
+    </div>
+        <div class="main">
+            <div class="main-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h1 class="brand-heading">Name of App</h1>
+                            <p class="quote">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+                            <!-- Facebook -->
+                            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+
+                            <!-- Google Login -->
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+                            <!-- LinkedIn -->
+                            <script type="in/Login"></script>
+                            <script type="text/javascript">
+                                
+                                // Setup an event listener to make an API call once auth is complete
+                                function onLinkedInLoad() {
+                                    IN.Event.on(IN, "auth", getProfileData);
+                                }
+
+                                // Handle the successful return from the API call
+                                function onSuccess(data) {
+                                    console.log(data);
+                                }
+
+                                // Handle an error response from the API call
+                                function onError(error) {
+                                    console.log(error);
+                                }
+
+                                // Use the API call wrapper to request the member's basic profile data
+                                function getProfileData() {
+                                    IN.API.Raw("/people/~").result(onSuccess).error(onError);
+                                }
+
+                            </script>
+
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-2"></div>
+                        <div class="col-md-3 center-block" id="image">Image here</div>
+                        <div class="col-md-3 center-block" id="video">Video here</div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <button class="btn btn-lg">Save</button>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+            </div>
+        </div>
+    <!-- <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Group Name 2016</p>
+        </div>
+    </footer> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+    </body>
+    </html>

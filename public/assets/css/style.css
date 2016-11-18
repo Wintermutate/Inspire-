@@ -1,0 +1,239 @@
+body,
+html {
+    height: 100%;
+    width: 100%
+}
+
+.navbar-custom,
+body {
+    background-color: #000
+
+}
+
+.main,
+body,
+html {
+    width: 100%
+}
+
+body {
+    font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
+    webkit-tap-highlight-color: rgba(255, 255, 255, .2)
+}
+
+.btn,
+.navbar-custom,
+h1 {
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+h1 {
+    margin: 0 0 35px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+@media (min-width:768px) {
+    p {
+        margin: 0 0 35px;
+        font-size: 15px;
+        line-height: 1.6
+    }
+}
+
+.light {
+    font-weight: 400
+}
+
+.navbar-custom {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .3)
+}
+
+.navbar-custom .navbar-toggle {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .2);
+    font-size: 12px
+}
+
+.navbar-custom .nav li a:active,
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:hover {
+    background-color: transparent;
+    outline: 0
+}
+
+.navbar-custom .navbar-toggle:active,
+.navbar-custom .navbar-toggle:focus {
+    outline: 0
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 700
+}
+
+.navbar-custom .navbar-brand:focus {
+    outline: 0
+}
+
+.navbar-custom a {
+    color: #fff
+}
+
+@media (min-width:768px) {
+    .navbar-custom {
+        padding: 20px 0;
+        border-bottom: none;
+        letter-spacing: 1px;
+        background: 0 0;
+        -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        transition: background .5s ease-in-out, padding .5s ease-in-out
+    }
+    .navbar-custom.top-nav-collapse {
+        padding: 0;
+        background: #000;
+        border-bottom: 1px solid rgba(255, 255, 255, .3)
+    }
+}
+
+.main {
+    display: table;
+    height: auto;
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+    background: url(../images/grayback.jpg); bottom center no-repeat #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover
+}
+
+.main .main-body {
+    /*display: table-cell;*/
+    padding-top: 120px;
+}
+
+@media (min-width:768px) {
+    .main {
+        height: 100%;
+        padding: 0
+    }
+    .main .main-body .brand-heading {
+        font-size: 50px;
+    }
+    .main .main-body .quote {
+        font-size: 20px
+    }
+}
+
+
+.btn-default, .btn-lg, .btn-default a {
+    background-color: #d3d3d3;
+}
+
+.btn-default a {
+    color: #000000;
+}
+
+.btn-lg {
+    margin: 20px;
+}
+
+.btn-default:focus,
+.btn-default a:hover,
+.btn-default:hover {
+    outline: 0;
+    color: #fff;
+    background: rgba(255, 255, 255, .1);
+}
+
+.main .main-body #image {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffffff;
+}
+
+.main .main-body #video {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffffff;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #a9a9a9;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    color: #000000;
+}
+
+
+/*footer {
+    padding: 30px 0
+}
+
+footer p {
+    margin: 0
+}*/
