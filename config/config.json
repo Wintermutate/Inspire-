@@ -2,8 +2,8 @@
   "development": {
     "host": "localhost",
     "username": "root",
-    "password": "",
-    "database": "cat_with_sequelize_db",
+    "password": null,
+    "database": "inspire_db",
     "dialect": "mysql"
 
   },
@@ -22,3 +22,4 @@
     "dialect": "mysql"
   }
 }
+
