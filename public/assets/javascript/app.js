@@ -8,10 +8,11 @@ var span = document.getElementsByClassName("close")[0];
 
 var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA']
 
+var pintrestArray = ['https://www.pinterest.com/patriciahensley/inspiration-inspiration-inspiration/', 'https://www.pinterest.com/mandyrae46135/motivation-motivation-motivation/', 'https://www.pinterest.com/autumnspicer/inspire-me-to-inspire-you/', 'https://www.pinterest.com/mattwilsontv/quote-pictures/']
 var randomNumber = Math.floor(Math.random() * 4) + 1; 
 console.log(randomNumber);
 
-var APIArray = [youtubeAPI, quotesAPI, imageAPI ];
+var APIArray = [youtubeAPI, quotesAPI, imageAPI];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -71,7 +72,12 @@ function imageAPI(){
             $('.image').attr('src', response[0].media)
         });
 }
-
+function randomPins(){
+  var currentPins = pintrestArray[Math.floor(Math.random()*pintrestArray.length)];
+  $("<a href='' data-pin-do='embedBoard' data-pin-board-width='400' data-pin-scale-height='240' data-pin-scale-width='100' id='pinboard'> </a>").appendTo('.content');
+  $('#pinboard').attr('href', currentPins);
+  console.log(currentPins);
+}
 
 function randomContent(){
   var currentContent = APIArray[Math.floor(Math.random()*APIArray.length)];
@@ -87,6 +93,8 @@ $('#inspire').on('click', function(){
  $('#quote').empty();
  $('.image').attr('src', '');
  randomContent();
+ $('.content span').remove();                        
+ randomPins();
 })
 
 function onYouTubeIframeAPIReady() {
