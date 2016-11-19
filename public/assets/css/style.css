@@ -150,21 +150,38 @@ h1 {
 .btn-lg {
     margin: 20px;
     /*pop*/
-    -webkit-transition: all 1s ease;
+    /*-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
+    -o-transition: all 1s ease;*/
 }
 
 /*pop*/
-.btn-lg:hover {
+/*.btn-lg:hover {
     height: 60px;
     width: 90px;
+}*/
+/*rotate*/
+.btn-lg:hover {
+    -ms-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 /*pop*/
-#inspire:hover {
+/*#inspire:hover {
     height: 60px;
     width: 155px;
+}*/
+
+/*rotate*/
+#inspire:hover {
+    -ms-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 .btn-default:focus,
@@ -174,8 +191,13 @@ h1 {
     color: #fff;
     background: rgba(255, 255, 255, .1);
     /*pop*/
-    height: 40px;
-    width: 75px;
+    /*height: 40px;
+    width: 75px;*/
+    -ms-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 .main .main-body #image {
