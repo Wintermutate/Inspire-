@@ -53,7 +53,7 @@ function quotesAPI() {
               format: "jsonp"
             }
          }).then(function(response) {
-            $(".quote").empty().text(response.quoteText);
+            $("#quote").empty().text(response.quoteText);
         });
 }
 
@@ -81,9 +81,11 @@ function randomContent(){
 
 $('#inspire').on('click', function(){
   console.log('test');
- $('#player').empty();
+ $('#player').remove();
+ var youtubeDiv = $('<div>').attr('id', 'player');
+ youtubeDiv.prependTo('.content');
  $('#quote').empty();
- $('.image').attr('src', '')
+ $('.image').attr('src', '');
  randomContent();
 })
 
