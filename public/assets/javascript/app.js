@@ -6,6 +6,13 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA']
+
+var randomNumber = Math.floor(Math.random() * 4) + 1; 
+console.log(randomNumber);
+
+var APIArray = [youtubeAPI, quotesAPI, imageAPI ];
+
 // When the user clicks the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
@@ -23,32 +30,20 @@ window.onclick = function(event) {
     }
 }
 
+function youtubeAPI() { 
 
-function onYouTubeIframeAPIReady() {
+  var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
 
-var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA']
-
-var randomNumber = Math.floor(Math.random() * 4) + 1; 
-console.log(randomNumber);
-
-switch(randomNumber) {
-    case 1:
-        
-	var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
-
-	var player = new YT.Player("player", {
-	                    height: '360',
-	                     width: '640',
-	                     videoId: currentVideo,	                     
-	               });
+  var player = new YT.Player("player", {
+                      height: '360',
+                       width: '640',
+                       videoId: currentVideo,                      
+                 });
 
         console.log("API Ready");
-	
-        break;
-    case 2:
-        $(document).ready(function(){
-
-	$.ajax({
+}
+function quotesAPI() {
+  $.ajax({
             url: "http://api.forismatic.com/api/1.0/",
             jsonp: "jsonp",
             dataType: "jsonp",
@@ -60,15 +55,14 @@ switch(randomNumber) {
          }).then(function(response) {
             $(".quote").empty().text(response.quoteText);
         });
+}
 
-	})
-        break;
-     case 3:
-     $.ajax({
+function imageAPI(){
+  $.ajax({
             url: "https://healthruwords.p.mashape.com/v1/quotes/",
             dataType: "json",
             data: {
-            	t: "Motivational"
+              t: "Motivational"
             },
             headers: {
                 "X-Mashape-Key": "DajIhcCO6emsh8uKH4Y06OID3hgUp12rSMHjsn9mLyW1nCivlD"
@@ -76,30 +70,88 @@ switch(randomNumber) {
          }).then(function(response) {
             $('.image').attr('src', response[0].media)
         });
-     	break;
-     case 4:
-    // var widget = SC.Widget('soundcloud');
-    // widget.load("https://soundcloud.com/on-air-with-ella", {});
-    SC.initialize({
-		client_id: 'YOUR_CLIENT_ID'
-	});
+}
 
-	var track_url = 'http://soundcloud.com/forss/flickermood';
-	SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
-  		console.log('oEmbed response: ', oEmbed);
-	});
-    default:
+
+function randomContent(){
+  var currentContent = APIArray[Math.floor(Math.random()*APIArray.length)];
+  currentContent();
+  console.log('testing content');
+  }
+
+$('#inspire').on('click', function(){
+  console.log('test');
+ $('#player').empty();
+ $('#quote').empty();
+ $('.image').attr('src', '')
+ randomContent();
+})
+
+function onYouTubeIframeAPIReady() {
+  randomContent();
+}
+// function onYouTubeIframeAPIReady() {
+
+
+
+
+// switch(randomNumber) {
+//     case 1:
+        
+// 	var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
+
+// 	var player = new YT.Player("player", {
+// 	                    height: '360',
+// 	                     width: '640',
+// 	                     videoId: currentVideo,	                     
+// 	               });
+
+//         console.log("API Ready");
+	
+//         break;
+//     case 2:
+//         $(document).ready(function(){
+
+// 	$.ajax({
+//             url: "http://api.forismatic.com/api/1.0/",
+//             jsonp: "jsonp",
+//             dataType: "jsonp",
+//             data: {
+//               method: "getQuote",
+//               lang: "en",
+//               format: "jsonp"
+//             }
+//          }).then(function(response) {
+//             $(".quote").empty().text(response.quoteText);
+//         });
+
+// 	})
+//         break;
+//      case 3:
+//      $.ajax({
+//             url: "https://healthruwords.p.mashape.com/v1/quotes/",
+//             dataType: "json",
+//             data: {
+//             	t: "Motivational"
+//             },
+//             headers: {
+//                 "X-Mashape-Key": "DajIhcCO6emsh8uKH4Y06OID3hgUp12rSMHjsn9mLyW1nCivlD"
+//             }
+//          }).then(function(response) {
+//             $('.image').attr('src', response[0].media)
+//         });
+//      	break;
+//     default:
      
-	var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
+// 	var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
 
-	var player = new YT.Player("player", {
-	                    height: '360',
-	                     width: '640',
-	                     videoId: 'RYlCVwxoL_g',	                     
-	               });
+// 	var player = new YT.Player("player", {
+// 	                    height: '360',
+// 	                     width: '640',
+// 	                     videoId: 'RYlCVwxoL_g',	                     
+// 	               });
 
-        console.log("API Ready");
-}
-}
-
+//         console.log("API Ready");
+// }
+// }
 
