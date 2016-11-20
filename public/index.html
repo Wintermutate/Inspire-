@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
 
     <link href="assets/css/style.css" rel="stylesheet">
 
@@ -50,10 +51,13 @@
                         <label class="sr-only" for="exampleInputPassword">Password</label>
                         <input type="password" class="form-control-sm" id="password" placeholder="Password">
                     </div>
-  
-                    <button type="submit" class="btn btn-default btn-sm">Log In</button>
+  					<div class="col-md-3 col-sm-3 col-xs-6" id="login">
+                    	<a href="#" class="btn btn-sm animated-button thar-one">Login</a>
+                    </div>
                     <!-- Trigger/Open The Modal -->
-                    <button type="signup" class="btn btn-default btn-sm"><a href="#" id="myBtn">Sign Up</a></button>
+                    <div class="col-md-3 col-sm-3 col-xs-6" id="sign">
+                    	<a href="#" type="signup" class="btn btn-sm animated-button thar-two" id="myBtn">Sign Up</a>
+                    </div>
 
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
@@ -118,7 +122,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h1 class="brand-heading">Inspire</h1>
+                        	<div id="replacetitle">
+                        		<!-- <h1 class="brand-heading">Inspire</h1> -->
+                        	</div>
                             <div class="content">
                             <div id="player"></div>
                             <p class="quote"></p>
@@ -136,20 +142,18 @@
                 </div>
                     <div class="row">
                         <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <button class="btn btn-lg" id="inspire">Inspire Me!</button>
-                            <button class="btn btn-lg" id="save">Save</button>
+                        <div class="col-md-3">
+                        	<a href="#" class="ghst-btn" id="inspire">Inspire!</a>
                         </div>
+                            <!-- <button class="btn btn-lg" id="inspire">Inspire Me!</button> -->
+                        <div class="col-md-3">
+                            <a href="#" class="ghst-btn2">Save</a>
+                        </div>
+                            <!-- <button class="btn btn-lg" id="save">Save</button> -->
                         <div class="col-md-3"></div>
                     </div>
             </div>
         </div>
-    <!-- <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; Group Name 2016</p>
-        </div>
-    </footer> -->
-   
     <script src="assets/javascript/app.js"></script>
     </body>
     </html>
