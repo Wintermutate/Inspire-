@@ -540,5 +540,21 @@ a.animated-button.thar-two:before {
   background: #ff0000;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 }
-
+/*button in modal*/
+a.animated-button.victoria-three {
+  border: 2px solid #ff0000;
+  z-index: 0;
+}
+a.animated-button.victoria-three:after {
+  background: #ff0000;
+  opacity: .5;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+a.animated-button.victoria-three:hover:after {
+  height: 140%;
+  opacity: 1;
+}
 
