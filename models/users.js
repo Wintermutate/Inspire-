@@ -12,9 +12,10 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
        User.belongsToMany(models.Usersmeta, {
           onDelete: "CASCADE",
+          as: "relationship",
           through: "favorites",
           hooks: true,
-          foreignKey: "user_ID"
+          foreignKey: "user_id"
         })
       }
     }

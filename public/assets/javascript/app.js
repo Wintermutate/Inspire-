@@ -6,7 +6,7 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA']
+var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA']
 var songArray =["2HHtWyy5CgaQbC7XSoOb0e","2KxIMZDazuXN3yvPC6Kqwn", "2zvXUc9nn5Uwer8dbWxN8F"]
 
 var APIArray = [youtubeAPI, quotesAPI, imageAPI, spotifyAPI];
@@ -37,7 +37,7 @@ function youtubeAPI() {
                        width: '640',
                        videoId: currentVideo,                      
                  });
-                  
+
 }
 function quotesAPI() {
   $.ajax({
@@ -254,3 +254,12 @@ function mapDirections(cord1, cord2){
   });
 
 }
+
+function getVideos(){
+  console.log("videos getting")
+  $.get("/content/videos", function(data){
+    console.log(data);
+  })
+}
+
+getVideos();

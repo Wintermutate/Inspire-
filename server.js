@@ -9,7 +9,7 @@ var models = require("./models");
 
 // Our model controllers (rather than routes)
 var application_controller = require('./controllers/application_controller');
-
+var content_controller = require('./controllers/content_controller');
 // Express settings
 // ================
 
@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', application_controller);
+app.use('/content', content_controller);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
