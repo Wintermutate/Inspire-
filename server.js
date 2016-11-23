@@ -21,7 +21,6 @@ var PORT = process.env.PORT || 8080;
 // override POST to have DELETE and PUT
 app.use(methodOverride('_method'))
 
-/
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
