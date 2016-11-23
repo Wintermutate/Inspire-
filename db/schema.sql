@@ -1,20 +1,30 @@
-CREATE database inspure_db;
+CREATE DATABASE inspire_db;
 
 USE inspire_db;
 
-CREATE TABLE users(
-id BIGINT NOT NULL AUTO_INCREMENT,
-username VARCHAR(50),
-password VARCHAR(50),
-email VARCHAR(254),
-data_created DATETIME,
-PRIMARY KEY (id)
-)
+CREATE TABLE users (
+  id INTEGER(11) NOT NULL AUTO_INCREMENT,
+  username VARCHAR(20) NOT NULL DEFAULT '',
+  password VARCHAR(20) NOT NULL DEFAULT '',
+  email VARCHAR(100) NOT NULL DEFAULT '',
+  created DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (id)
+);
 
-CREATE TABLE logins (
-loginID BIGINT NOT NULL AUTO_INCREMENT,
-userid BIGINT,
-last_login DATETIME,
-IP_ADDRESS VARCHAR(15),
-PRIMARY KEY (loginID)
-)
+CREATE TABLE users_meta (
+  meta_id INTEGER(11) NOT NULL AUTO_INCREMENT,
+  user_id INTEGER(11) NOT NULL DEFAULT 0,
+  favorite_podcast VARCHAR(225) NOT NULL DEFAULT '',
+  favorite_videos VARCHAR(225) NOT NULL DEFAULT '',
+  favorite_quotes VARCHAR(225) NOT NULL DEFAULT '',
+  created DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (meta_id)
+);
+
+CREATE TABLE foreign_users (
+  id INTEGER(11) NOT NULL AUTO_INCREMENT,
+  social VARCHAR(250),
+  loggedIn BOOLEAN default false,
+  created DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (id)
+);

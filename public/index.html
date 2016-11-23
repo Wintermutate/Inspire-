@@ -7,10 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Name of App</title>
+    <title>Inspirational Overload</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script
+    type="text/javascript"
+    defer
+    src="//assets.pinterest.com/js/pinit.js"
+    ></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -21,25 +28,6 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="469846503364-vsarejtqsj18aatj4qjiorb39oiub1ht.apps.googleusercontent.com">
 
-    <!-- Facebook -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1824784101112300',
-          xfbml      : true,
-          version    : 'v2.6'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-
     <!-- LinkedIn -->
     <script type="text/javascript" src="//platform.linkedin.com/in.js">
         api_key:   77nx3dx4wvbsgy
@@ -47,11 +35,20 @@
     </script>
 
 </head>
-<!-- comments in lines 22 and 25 out just to save what it was before change -->
-<!-- <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"> -->
-<body id="page-top">
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Facebook login script -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1824784101112300";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
     <div class="row">
-    <!-- <nav class="navbar navbar-custom navbar-fixed-top" role="navigation"> -->
     <nav class="navbar navbar-custom" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -59,7 +56,7 @@
                     Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    Name of App
+                    Inspire
                 </a>
             </div>
 
@@ -91,17 +88,61 @@
                         <div class="modal-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1" class="text-center">Create Username</label>
-                                    <br>
-                                    <input type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                                    <div class="row">
+                                        <div class="col-md-3 col-md-offset-3"></div>
+                                        <div class="col-md-6 text-center">
+                                            <label for="exampleInputEmail1" class="text-center">Username</label>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-md-offset-3"></div>
+                                        <div class="col-md-6 text-center">
+                                            <input type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div>
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1" class="text-center">Create Password</label>
-                                    <br>
-                                    <input type="password" class="form-control text-center" id="exampleInputPassword1" placeholder="Password">
+                                    <div class="row">
+                                        <div class="col-md-3 col-md-offset-3"></div>
+                                        <div class="col-md-6 text-center">
+                                            <label for="exampleInputPassword1" class="text-center">Password</label>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-md-offset-3"></div>
+                                        <div class="col-md-6 text-center">
+                                            <input type="password" class="form-control text-center" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div>
                                 </div>
                             </form>
+                            
+
+                            <!-- all the buttons to login with social media -->
+                            <div class="socialLogin">
+                                <!-- Facebook -->
+                                <fb:login-button class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true" scope="public_profile email" onlogin="checkLoginState();"></fb:login-button>
+
+                                <!-- Google Login -->
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+                                <!-- LinkedIn -->
+                                <script type="text/javascript">
+                                    function onLinkedInAuth()
+                                    {
+                                        IN.API.Profile("me").result( function(me) {
+                                            var id = me.values[0].id;
+                                        });
+                                    }
+                                </script>
+
+                                <script type="IN/Login" data-onAuth="onLinkedInAuth"></script>
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="creatingSignUp" class="btn btn-default btn-sm center-block" id="signin">Sign Up</button>
@@ -120,40 +161,27 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h1 class="brand-heading">Name of App</h1>
-                            <p class="quote">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        
-                            <!-- Facebook -->
-                            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-
-                            <!-- Google Login -->
-                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-                            <!-- LinkedIn -->
-                            <script type="text/javascript">
-                                function onLinkedInAuth()
-                                {
-                                  IN.API.Profile("me").result( function(me) {
-                                      var id = me.values[0].id;
-                                      // AJAX call to pass back id to your server
-                                    });
-                                }
-                            </script>
-                            <script type="IN/Login" data-onAuth="onLinkedInAuth"></script>
-
+                            <h1 class="brand-heading">Inspire</h1>
+                            <div class="content">
+                            <div id="player"></div>
+                            <p class="quote"></p>
+                            <img src="" class="image">
+                            <a href="https://www.pinterest.com/janew/inspiration/"
+                               data-pin-do="embedBoard"
+                               data-pin-board-width="560"
+                               data-pin-scale-height="420"
+                               data-pin-scale-width="150"
+                               id="pinboard">
+                            </a>                            
+                            </div>
                         </div>
                     </div>
                 </div>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-2"></div>
-                        <div class="col-md-3 center-block" id="image">Image here</div>
-                        <div class="col-md-3 center-block" id="video">Video here</div>
-                        <div class="col-md-3"></div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
-                            <button class="btn btn-lg">Save</button>
+                            <button class="btn btn-lg" id="inspire">Inspire Me!</button>
+                            <button class="btn btn-lg" id="save">Save</button>
                         </div>
                         <div class="col-md-3"></div>
                     </div>
@@ -164,9 +192,7 @@
             <p>Copyright &copy; Group Name 2016</p>
         </div>
     </footer> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   
     <script src="assets/javascript/app.js"></script>
     </body>
     </html>

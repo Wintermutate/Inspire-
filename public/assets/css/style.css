@@ -97,6 +97,10 @@ h1 {
         border-bottom: 1px solid rgba(255, 255, 255, .3)
     }
 }
+/*ombre affect*/
+.navbar-custom {
+  background-image: url("../images/gray-gradient.png");
+}
 
 .main {
     display: table;
@@ -145,14 +149,38 @@ h1 {
 .btn-lg {
     margin: 20px;
     /*pop*/
-    -webkit-transition: all 1s ease;
+    /*-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
+    -o-transition: all 1s ease;*/
 }
+
 /*pop*/
-.btn-lg:hover {
+/*.btn-lg:hover {
     height: 60px;
     width: 90px;
+}*/
+/*rotate*/
+.btn-lg:hover {
+    -ms-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+
+/*pop*/
+/*#inspire:hover {
+    height: 60px;
+    width: 155px;
+}*/
+
+/*rotate*/
+#inspire:hover {
+    -ms-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 .btn-default:focus,
@@ -162,8 +190,13 @@ h1 {
     color: #fff;
     background: rgba(255, 255, 255, .1);
     /*pop*/
-    height: 40px;
-    width: 75px;
+    /*height: 40px;
+    width: 75px;*/
+    -ms-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 .main .main-body #image {
@@ -178,17 +211,6 @@ h1 {
     border: 2px solid #ffffff;
 }
 
-
-
-
-/*footer {
-    padding: 30px 0
-}
-footer p {
-    margin: 0
-}*/
-
-/*Modal CSS*/
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -215,8 +237,7 @@ footer p {
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s;
-    color: #000000;
+    animation-duration: 0.4s
 }
 
 /* Add Animation */
@@ -253,9 +274,7 @@ footer p {
 
 .modal-body {
     padding: 2px 16px;
-}
-.modal-body label, .modal-body input {
-    margin-left: 150px;
+    color: #000000;
 }
 
 .modal-footer {
@@ -263,4 +282,11 @@ footer p {
     background-color: #525252;
     color: white;
 }
-/*End of modal*/
+
+
+/*footer {
+    padding: 30px 0
+}
+footer p {
+    margin: 0
+}*/

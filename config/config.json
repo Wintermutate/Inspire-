@@ -3,7 +3,7 @@
     "host": "localhost",
     "username": "root",
     "password": "Coolgame821!",
-    "database": "cat_with_sequelize_db",
+    "database": "inspire_db",
     "dialect": "mysql"
 
   },

@@ -5,7 +5,8 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override'); // for deletes in express
-
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 
 // Our model controllers (rather than routes)
 var application_controller = require('./controllers/application_controller');
@@ -52,3 +53,19 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 
 app.listen(PORT);
+
+//new code
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
