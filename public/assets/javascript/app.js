@@ -188,29 +188,40 @@ function markGroups() {
 }
 
 function getEvents(groupURL) {
-  $.ajax({
-      url: "https://api.meetup.com/" + groupURL + "/events",
-      method: "GET",
-      dataType: "jsonp",
-      data: {
-        key: "1b167d2b5c2a66754245583622762e74",
-      }
-  }).then(function(response) {
-        console.log(response);
-        if(response.data.length == 0) {
-            var event = $("<div>");
-            event.text("NO UPCOMING EVENTS");
-            event.appendTo(".eventList");
-        }
-        var limit = 5;
-        if(response.data.length <= 5){
-          limit = response.data.length;
-        }
-        for(var i = 0; i < limit; i++) {
-            console.log("Events");
-            var event = $("<div>");
-            event.text(response.data[i].name);
-            event.appendTo(".eventList");
-        } 
-  });
+ $.ajax({
+     url: "https://api.meetup.com/" + groupURL + "/events",
+     method: "GET",
+     dataType: "jsonp",
+     data: {
+       key: "1b167d2b5c2a66754245583622762e74",
+     }
+ }).then(function(response) {
+       console.log(response);
+       if(response.data.length == 0) {
+           var event = $("<div>");
+           event.text("NO UPCOMING EVENTS");
+           event.appendTo(".eventList");
+       }
+       if(!response.data[0].venue) {
+         return false;
+       }
+       for(var i = 0; i < 1; i++) {
+           console.log("Events");
+           var event = $("<div>");
+           event.css("border", "solid black 1px");
+           //var description = $(response.data[i].description);
+           var name = $("<p>").text(response.data[i].name);
+           var address = $("<p>").text(response.data[i].venue.address_1);
+           var city_state = $("<p>").text(response.data[i].venue.city + ", " + response.data[i].venue.state);
+           
+           var time = new Date(response.data[i].time);
+           var date = $("<p>").text(time.toDateString() + " " + time.toLocaleTimeString());
+           event.append(name);
+           //event.append(description);
+           event.append(address);
+           event.append(city_state);
+           event.append(date);
+           event.appendTo(".eventList");
+       }
+ });
 }
