@@ -7,11 +7,9 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA']
+var songArray =["2HHtWyy5CgaQbC7XSoOb0e","2KxIMZDazuXN3yvPC6Kqwn", "2zvXUc9nn5Uwer8dbWxN8F"]
 
-var randomNumber = Math.floor(Math.random() * 4) + 1; 
-console.log(randomNumber);
-
-var APIArray = [youtubeAPI, quotesAPI, imageAPI];
+var APIArray = [youtubeAPI, quotesAPI, imageAPI, spotifyAPI];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -72,6 +70,16 @@ function imageAPI(){
         });
 }
 
+function spotifyAPI(){
+  var spotifyURL = "https://embed.spotify.com/?uri=spotify%3Atrack%3A";
+  var randomSong = songArray[Math.floor(Math.random()*songArray.length)];
+  var spotifyFrame = $("<iframe>");
+  spotifyFrame.attr("src", spotifyURL + randomSong);
+  spotifyFrame.attr("width", "300");
+  spotifyFrame.attr("height", "300");
+  $(".content").append(spotifyFrame);
+}
+
 
 function randomContent(){
   var currentContent = APIArray[Math.floor(Math.random()*APIArray.length)];
@@ -86,6 +94,7 @@ $('#inspire').on('click', function(){
  youtubeDiv.prependTo('.content');
  $('#quote').empty();
  $('.image').attr('src', '');
+ $('iframe').remove();
  randomContent();
 })
 
