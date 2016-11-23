@@ -37,8 +37,7 @@ function youtubeAPI() {
                        width: '640',
                        videoId: currentVideo,                      
                  });
-
-        console.log("API Ready");
+                  
 }
 function quotesAPI() {
   $.ajax({
@@ -242,10 +241,13 @@ function mapDirections(cord1, cord2){
     data:{
       key:"AIzaSyBwWhFI5G61GrAWmITWKwtq93Btg1zS3mA",
       origin:cord1.lat + "," + cord1.lng,
-      waypoints:cord2.lat + "," + cord2.lng
+      waypoints:cord2.lat + "," + cord2.lng,
+      destination:cord2.lat + "," + cord2.lng
     },
     dataType:"jsonp",
-    type:"GET"
+    type:"GET",
+    jsonpCallback: "jsonCallback",
+    crossDomain : true
     
   }).then(function(response){
     console.log(response);

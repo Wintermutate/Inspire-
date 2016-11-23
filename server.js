@@ -5,7 +5,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override'); // for deletes in express
-
+var models = require("./models");
 
 // Our model controllers (rather than routes)
 var application_controller = require('./controllers/application_controller');
@@ -50,5 +50,6 @@ app.use(function(err, req, res, next) {
 
 // our module get's exported as app.
 module.exports = app;
-
+models.sequelize.sync().then(function () {
 app.listen(PORT);
+});

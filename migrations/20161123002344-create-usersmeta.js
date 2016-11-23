@@ -8,19 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      number: {
-        type: Sequelize.INTEGER
-      },
-      user: {
-        type: Sequelize.INTEGER
-      },
-      podcasts: {
+      content: {
         type: Sequelize.STRING
       },
-      video: {
-        type: Sequelize.STRING
-      },
-      quote: {
+      content_type: {
         type: Sequelize.STRING
       },
       createdAt: {

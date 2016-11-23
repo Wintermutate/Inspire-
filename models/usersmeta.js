@@ -1,15 +1,20 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Usersmeta = sequelize.define('Usersmeta', {
-    number: DataTypes.INTEGER,
-    user: DataTypes.INTEGER,
-    podcasts: DataTypes.STRING,
-    video: DataTypes.STRING,
-    quote: DataTypes.STRING
+    content: DataTypes.STRING,
+    content_type: DataTypes.STRING    
   }, {
+    underscored: true,
+    freezeTableName: true,
+    paranoid: true,
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+       Usersmeta.belongsToMany(models.User, {
+          onDelete: "CASCADE",
+          through:"favorites",
+          hooks: true,
+          foreignKey: "content_id"
+        })
       }
     }
   });
