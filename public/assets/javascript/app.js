@@ -163,6 +163,7 @@ function addMarker(location, map, urlname) {
     console.log(urlname);
     $(".eventList").empty();
     getEvents(urlname);
+    mapDirections(currentPos, location);
   })
 }
 
@@ -217,7 +218,7 @@ function getEvents(groupURL) {
        for(var i = 0; i < 1; i++) {
            console.log("Events");
            var event = $("<div>");
-           event.css("border", "solid black 1px");
+           event.css("border", "solid black 2px");
            //var description = $(response.data[i].description);
            var name = $("<p>").text(response.data[i].name);
            var address = $("<p>").text(response.data[i].venue.address_1);
@@ -233,4 +234,21 @@ function getEvents(groupURL) {
            event.appendTo(".eventList");
        }
  });
+}
+
+function mapDirections(cord1, cord2){
+  $.ajax(
+    {url:"https://maps.googleapis.com/maps/api/directions/json", 
+    data:{
+      key:"AIzaSyBwWhFI5G61GrAWmITWKwtq93Btg1zS3mA",
+      origin:cord1.lat + "," + cord1.lng,
+      waypoints:cord2.lat + "," + cord2.lng
+    },
+    dataType:"jsonp",
+    type:"GET"
+    
+  }).then(function(response){
+    console.log(response);
+  });
+
 }
