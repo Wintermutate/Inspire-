@@ -11,7 +11,7 @@ var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vd
 var randomNumber = Math.floor(Math.random() * 4) + 1; 
 console.log(randomNumber);
 
-var APIArray = [youtubeAPI, quotesAPI, imageAPI ];
+var APIArray = [youtubeAPI, quotesAPI, imageAPI];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -92,68 +92,125 @@ $('#inspire').on('click', function(){
 function onYouTubeIframeAPIReady() {
   randomContent();
 }
-// function onYouTubeIframeAPIReady() {
+var map;
+var currentPos;
+
+  // Geolocation
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+  //var infoWindow = new google.maps.InfoWindow({map: map});
+
+  $("#map").height($("#map").width());
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) { // Asynscronous
+      console.log(position.coords.latitude);
+      currentPos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      //console.log(currentPos);
+      var marker = new google.maps.Marker({
+        position: currentPos,
+        map: map,
+        icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        zIndex: 200
+      });
+      //infoWindow.setPosition(pos);
+      //infoWindow.setContent('Current Location.');
+      map.setCenter(currentPos);
+      markGroups();
+    }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+    });
 
 
+  } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
 
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(currentPos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
 
-// switch(randomNumber) {
-//     case 1:
-        
-// 	var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
+var markers = [];
+function addMarker(location, map, urlname) {
+  // Add the marker at the clicked location, and add the next-available label
+  // from the array of alphabetical characters.
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
 
-// 	var player = new YT.Player("player", {
-// 	                    height: '360',
-// 	                     width: '640',
-// 	                     videoId: currentVideo,	                     
-// 	               });
+  marker.addListener("click", function() {
+    console.log(urlname);
+    $(".eventList").empty();
+    getEvents(urlname);
+  })
+}
 
-//         console.log("API Ready");
-	
-//         break;
-//     case 2:
-//         $(document).ready(function(){
+function markGroups() {
+  $.ajax({
+      url: "https://api.meetup.com/find/groups",
+      method: "GET",
+      dataType: "jsonp",
+      data: {
+        key: "1b167d2b5c2a66754245583622762e74",
+        text: "inspirational",
+        // zip: "95816",
+        lat: currentPos.lat,
+        lon: currentPos.lng,
+        radius: "25"
+    }
+  }).then(function(response) {
+    console.log(response);
+    for(var i = 0; i< response.data.length; i++){
+      // var group = $("<div>").addClass("group");
+      // group.text(response.data[i].name);
+      // group.appendTo(".content");
+      // group.data("name", response.data[i].name);
+      var coord = {
+        lat: response.data[i].lat,
+        lng: response.data[i].lon
+      };
+      var urlname = response.data[i].urlname;
+      addMarker(coord, map, urlname);
+    }
+  });
+}
 
-// 	$.ajax({
-//             url: "http://api.forismatic.com/api/1.0/",
-//             jsonp: "jsonp",
-//             dataType: "jsonp",
-//             data: {
-//               method: "getQuote",
-//               lang: "en",
-//               format: "jsonp"
-//             }
-//          }).then(function(response) {
-//             $(".quote").empty().text(response.quoteText);
-//         });
-
-// 	})
-//         break;
-//      case 3:
-//      $.ajax({
-//             url: "https://healthruwords.p.mashape.com/v1/quotes/",
-//             dataType: "json",
-//             data: {
-//             	t: "Motivational"
-//             },
-//             headers: {
-//                 "X-Mashape-Key": "DajIhcCO6emsh8uKH4Y06OID3hgUp12rSMHjsn9mLyW1nCivlD"
-//             }
-//          }).then(function(response) {
-//             $('.image').attr('src', response[0].media)
-//         });
-//      	break;
-//     default:
-     
-// 	var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
-
-// 	var player = new YT.Player("player", {
-// 	                    height: '360',
-// 	                     width: '640',
-// 	                     videoId: 'RYlCVwxoL_g',	                     
-// 	               });
-
-//         console.log("API Ready");
-// }
-// }
-
+function getEvents(groupURL) {
+  $.ajax({
+      url: "https://api.meetup.com/" + groupURL + "/events",
+      method: "GET",
+      dataType: "jsonp",
+      data: {
+        key: "1b167d2b5c2a66754245583622762e74",
+      }
+  }).then(function(response) {
+        console.log(response);
+        if(response.data.length == 0) {
+            var event = $("<div>");
+            event.text("NO UPCOMING EVENTS");
+            event.appendTo(".eventList");
+        }
+        var limit = 5;
+        if(response.data.length <= 5){
+          limit = response.data.length;
+        }
+        for(var i = 0; i < limit; i++) {
+            console.log("Events");
+            var event = $("<div>");
+            event.text(response.data[i].name);
+            event.appendTo(".eventList");
+        } 
+  });
+}

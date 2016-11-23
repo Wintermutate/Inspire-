@@ -122,10 +122,17 @@
             <div class="main-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div id="replacetitle">
-                                <!-- <h1 class="brand-heading">Inspire</h1> -->
-                            </div>
+                    <div class="col-md-4">
+                        <div id="map"></div>
+                        <h2 class="groupName"></h2>
+                           <div class="events">
+                               <h3>Events</h3>
+                               <div class="eventList">
+                                   
+                               </div>
+                           </div>
+                    </div>
+                        <div class="col-md-8">
                             <div class="content">
                             <div id="player"></div>
                             <p id="quote"></p>
@@ -155,6 +162,7 @@
                     </div>
             </div>
         </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwWhFI5G61GrAWmITWKwtq93Btg1zS3mA&callback=initMap"></script>
     <script src="assets/javascript/app.js"></script>
     </body>
     </html>
