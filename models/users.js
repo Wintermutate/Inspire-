@@ -5,7 +5,6 @@ module.exports = function(sequelize, DataTypes) {
     password: DataTypes.STRING    
   }, {
     tableName: 'users',
-    underscored: true,
     freezeTableName: true,
     paranoid: true,
     classMethods: {

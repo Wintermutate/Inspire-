@@ -6,8 +6,8 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA']
-var songArray =["2HHtWyy5CgaQbC7XSoOb0e","2KxIMZDazuXN3yvPC6Kqwn", "2zvXUc9nn5Uwer8dbWxN8F"]
+var vidArray = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA'];
+var songArray =["2HHtWyy5CgaQbC7XSoOb0e","2KxIMZDazuXN3yvPC6Kqwn", "2zvXUc9nn5Uwer8dbWxN8F"];
 
 var APIArray = [youtubeAPI, quotesAPI, imageAPI, spotifyAPI];
 
@@ -115,7 +115,6 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) { // Asynscronous
-      console.log(position.coords.latitude);
       currentPos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -180,7 +179,6 @@ function markGroups() {
         radius: "25"
     }
   }).then(function(response) {
-    console.log(response);
     for(var i = 0; i< response.data.length; i++){
       // var group = $("<div>").addClass("group");
       // group.text(response.data[i].name);
@@ -258,6 +256,7 @@ function mapDirections(cord1, cord2){
 function getVideos(){
   console.log("videos getting")
   $.get("/content/videos", function(data){
+    vidArray = data;
     console.log(data);
   })
 }

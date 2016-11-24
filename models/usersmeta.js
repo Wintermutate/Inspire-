@@ -4,7 +4,6 @@ module.exports = function(sequelize, DataTypes) {
     content: DataTypes.STRING,
     content_type: DataTypes.STRING    
   }, {
-    underscored: true,
     freezeTableName: true,
     paranoid: true,
     classMethods: {
