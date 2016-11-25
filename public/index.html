@@ -39,19 +39,17 @@
                     Inspire
                 </a>
             </div>
-
-
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <form class="form-inline">
+            <div data-header class="user-authorization collapse navbar-collapse navbar-right navbar-main-collapse">
+                <form data-login-form class="login-form form-inline" onsubmit="return false;">
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputEmail">Email</label>
-                        <input type="email" class="form-control-sm" id="email" placeholder="Email">
+                        <input type="email" class="login-username form-control-sm" id="email" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputPassword">Password</label>
                         <input type="password" class="form-control-sm" id="password" placeholder="Password">
                     </div>
-                    <button class="btn btn-sm" id="login">
+                    <button data-login-button class="login-button btn btn-sm" id="login">
                         <a href="#" class="btn btn-sm animated-button thar-one">Login</a>
                     </button>
                     <!-- Trigger/Open The Modal -->
@@ -59,7 +57,15 @@
                         <a href="#" type="signup" class="btn btn-sm animated-button thar-two" id="myBtn">Sign Up</a>
                     </button>
                 </div>
-
+                <div class="user-authorization" id="logged">
+                    <form data-login-form action="" class="login-form" onsubmit="return false;">
+                    </form>
+                    <div data-login-user class="login-user state-hidden" id="greeting">
+                         Hello, username.
+                    <button data-logout-button class='logout-button btn btn-sm'>
+                        <a href="#" class="btn btn-sm animated-button victoria-three" id="logout">Logout</a></button>
+                    </div>
+                </div>
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
 
@@ -107,7 +113,7 @@
                             
                         </div>
                         <div class="modal-footer">
-                            <button type="creatingSignUp" class="btn btn-sm center-block" id="signin"><a href="#" class="btn btn-sm animated-button victoria-three">Sign Up</a></button>
+                            <button data-login-button type="creatingSignUp" class=" login-button btn btn-sm center-block" id="signin"><a href="#" class="btn btn-sm animated-button victoria-three">Sign Up</a></button>
                         
                         </div>
                     <!-- end of modalstuff -->
@@ -117,7 +123,45 @@
         </div>
 
     </nav>
+    <!-- hamburger sidebar -->
+                <span id="saved" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
     </div>
+    <!-- sidebar -->
+        <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <h2 class="text-center">user</h2>
+            <button class="accordion">Videos</button>
+            <div class="panel">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Video</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                    </tr>
+                </table>
+            </div>
+            <button class="accordion">Quotes</button>
+            <div class="panel">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Quote</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                    </tr>
+                </table>
+            </div>
+            <button class="accordion">Podcasts</button>
+            <div class="panel">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Podcast</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- end sidebar -->
         <div class="main">
             <div class="main-body">
                 <div class="container">

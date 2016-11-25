@@ -28,6 +28,37 @@ window.onclick = function(event) {
     }
 }
 
+// sidebar
+function openNav() {
+    document.getElementById("mySidenav").style.width = "300px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+// accordion
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
+
+//toggling login
+$('document').ready(function(){
+  
+  $('[data-login-button], [data-logout-button]').click(function(){
+    $('[data-login-form], [data-login-user]').toggleClass('state-hidden');
+    $('[data-header]').toggleClass('state-logged-in');
+  });
+  
+});
+
+
 function youtubeAPI() { 
 
   var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)];
@@ -88,13 +119,17 @@ function randomContent(){
 
 $('#inspire').on('click', function(){
   console.log('test');
- $('#player').remove();
+    var timeAnimation = 700;
+  $('.content').fadeOut(timeAnimation, function(){
+     $('#player').remove();
  var youtubeDiv = $('<div>').attr('id', 'player');
  youtubeDiv.prependTo('.content');
  $('#quote').empty();
  $('.image').attr('src', '');
  $('iframe').remove();
  randomContent();
+  });
+  $('.content').fadeIn(timeAnimation);
 })
 
 function onYouTubeIframeAPIReady() {
