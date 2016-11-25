@@ -17,9 +17,9 @@ body {
     webkit-tap-highlight-color: rgba(255, 255, 255, .2)
 }
 
-#map {
+/*#map {
      width: 100%;
-}
+}*/
 
 .btn,
 .navbar-custom,
@@ -118,8 +118,20 @@ h1 {
     .main .main-body .brand-heading {
         font-size: 50px;
     }
-    .main .main-body .quote {
-        font-size: 20px
+    .main .main-body #quote {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    #login {
+      display: inline-block;
+      margin-top: -80px;
+      margin-left: 180px;
+    }
+    #sign {
+      display: inline-block;
+      margin-top: -80px;
     }
 }
 
@@ -195,6 +207,122 @@ h1 {
     background-color: #525252;
     color: white;
 }
+
+/*sidebar*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    /*changed from left to right*/
+    right: 0;
+    background-color: #04518C;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+span {
+  position: absolute;
+  right: 15px;
+}
+
+
+table {
+  color: #000000;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/*accordion*/
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd; 
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+div.panel.show {
+    display: block;
+}
+
+/*#map {
+  height: 180px;
+  width: 360px;
+}*/
+
+.events {
+  height: 180px;
+  width: 360px;
+}
+
+.header .logout-button,
+.header .welcome {
+  display: none;
+}
+.header.state-logged-in .logout-button,
+.header.state-logged-in .welcome {
+  display: block;
+}
+.user-authorization {
+  padding: 10px;
+}
+.user-authorization .login-form.state-hidden {
+  display: none;
+}
+.user-authorization .login-user.state-hidden {
+  display: none;
+}
+
+#logged {
+  margin-left: 800px;
+}
+
+/*#saved {
+  color: #04518C;
+}*/
 
 /*ghost button*/
 .ghst-btn {
@@ -396,7 +524,7 @@ h1 {
     -webkit-box-shadow: 0 0 20px #ff0000;
     box-shadow: 0 0 20px #ff0000;
 }
-.content .quote {
+.content #quote {
     -moz-box-shadow: 0 0 20px #003056;
     -webkit-box-shadow: 0 0 20px #003056;
     box-shadow: 0 0 20px #003056;
@@ -408,7 +536,7 @@ h1 {
     -webkit-box-shadow: 0 0 20px #47D9BF;
     box-shadow: 0 0 20px #47D9BF;
 }
-.content #pinboard {
+iframe {
     -moz-box-shadow: 0 0 20px #00A1D9;
     -webkit-box-shadow: 0 0 20px #00A1D9;
     box-shadow: 0 0 20px #00A1D9;
