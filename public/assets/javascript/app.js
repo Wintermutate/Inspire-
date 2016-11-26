@@ -299,6 +299,7 @@ function getEvents(groupURL) {
 
 // }
 
+// Retrive 'youtube' content
 function getVideos(){
   $.get("/content/youtube", function(data){
     vidArray = data;
@@ -306,6 +307,7 @@ function getVideos(){
   })
 }
 
+// Retrieve 'spotify' content
 function getSongs(){
   $.get("/content/spotify", function(data){
     songArray = data;
@@ -313,5 +315,31 @@ function getSongs(){
   })
 }
 
+//Testing POST (inserting data)
+function newData(content, contentType) {
+  $.post("/content/new", { content: content, contentType: contentType }, function(data) {
+    console.log(data);
+  }).fail(function(e) {
+    console.log(e.statusText);
+  })
+}
+
+// Get favorites of current user(provide email)
+function getFavorites(email) {
+  $.get("/favorites/" + email, function(data) {
+    console.log(data);
+  })
+}
+
+// Add to favorites
+function saveContent(email, content) {
+  $.post("/favorites/save/", {email: email, content: content}, function(data) {
+    console.log(data);
+  })
+}
+
 getVideos();
 getSongs();
+//getFavorites("test@gmail.com");
+//saveContent('test@gmail.com','eqhUHyVpAwE');
+//newData();

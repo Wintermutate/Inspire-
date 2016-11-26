@@ -10,6 +10,7 @@ var models = require("./models");
 // Our model controllers (rather than routes)
 var application_controller = require('./controllers/application_controller');
 var content_controller = require('./controllers/content_controller');
+var favorites_controller = require('./controllers/favorites_controller');
 // Express settings
 // ================
 
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', application_controller);
 app.use('/content', content_controller);
+app.use('/favorites', favorites_controller);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
