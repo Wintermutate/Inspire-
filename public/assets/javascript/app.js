@@ -90,7 +90,8 @@ function imageAPI(){
             url: "https://healthruwords.p.mashape.com/v1/quotes/",
             dataType: "json",
             data: {
-              t: "Motivational"
+              t: "Motivational",
+              size:"medium"
             },
             headers: {
                 "X-Mashape-Key": "DajIhcCO6emsh8uKH4Y06OID3hgUp12rSMHjsn9mLyW1nCivlD"
@@ -142,7 +143,7 @@ var currentPos;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 8
+    zoom: 10
   });
   //var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -184,7 +185,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 var markers = [];
-function addMarker(location, map, urlname) {
+function addMarker(location, map, urlname, groupInfo) {
   // Add the marker at the clicked location, and add the next-available label
   // from the array of alphabetical characters.
   var marker = new google.maps.Marker({
@@ -196,7 +197,18 @@ function addMarker(location, map, urlname) {
     console.log(urlname);
     $(".eventList").empty();
     getEvents(urlname);
-    mapDirections(currentPos, location);
+    console.log(groupInfo);
+    var contentString = 
+        "<div>" +
+          "<div><b>" + groupInfo.name + "</b></div>" +
+          "<div>" + groupInfo.city + ", " + groupInfo.state + "</div>" +
+          "<div><a target='_blank' href=" + groupInfo.link + ">Meetup Group Link</a>" + 
+        "</div>" 
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString 
+    });
+    infowindow.open(map, this);
+    //mapDirections(currentPos, location);
   })
 }
 
@@ -224,7 +236,7 @@ function markGroups() {
         lng: response.data[i].lon
       };
       var urlname = response.data[i].urlname;
-      addMarker(coord, map, urlname);
+      addMarker(coord, map, urlname, response.data[i]);
     }
   });
 }
@@ -244,49 +256,48 @@ function getEvents(groupURL) {
            event.text("NO UPCOMING EVENTS");
            event.appendTo(".eventList");
        }
-       if(!response.data[0].venue) {
-         return false;
-       }
        for(var i = 0; i < 1; i++) {
            console.log("Events");
            var event = $("<div>");
            event.css("border", "solid black 2px");
            //var description = $(response.data[i].description);
-           var name = $("<p>").text(response.data[i].name);
-           var address = $("<p>").text(response.data[i].venue.address_1);
-           var city_state = $("<p>").text(response.data[i].venue.city + ", " + response.data[i].venue.state);
-           
-           var time = new Date(response.data[i].time);
-           var date = $("<p>").text(time.toDateString() + " " + time.toLocaleTimeString());
+           var name = $("<div>").text(response.data[i].name);
            event.append(name);
-           //event.append(description);
-           event.append(address);
-           event.append(city_state);
+           if(response.data[i].venue) {
+            var address = $("<div>").text(response.data[i].venue.address_1);
+            var city_state = $("<div>").text(response.data[i].venue.city + ", " + response.data[i].venue.state);
+            event.append(address);
+            event.append(city_state);
+           }
+           var time = new Date(response.data[i].time);
+           var date = $("<div>").text(time.toDateString() + " " + time.toLocaleTimeString());
            event.append(date);
+           var link = $("<a>").text("More Info").attr("href", response.data[i].link).attr("target", "_blank");
+           event.append($("<div>").append(link));
            event.appendTo(".eventList");
        }
  });
 }
 
-function mapDirections(cord1, cord2){
-  $.ajax(
-    {url:"https://maps.googleapis.com/maps/api/directions/json", 
-    data:{
-      key:"AIzaSyBwWhFI5G61GrAWmITWKwtq93Btg1zS3mA",
-      origin:cord1.lat + "," + cord1.lng,
-      waypoints:cord2.lat + "," + cord2.lng,
-      destination:cord2.lat + "," + cord2.lng
-    },
-    dataType:"jsonp",
-    type:"GET",
-    jsonpCallback: "jsonCallback",
-    crossDomain : true
+// function mapDirections(cord1, cord2){
+//   $.ajax(
+//     {url:"https://maps.googleapis.com/maps/api/directions/json", 
+//     data:{
+//       key:"AIzaSyBwWhFI5G61GrAWmITWKwtq93Btg1zS3mA",
+//       origin:cord1.lat + "," + cord1.lng,
+//       waypoints:cord2.lat + "," + cord2.lng,
+//       destination:cord2.lat + "," + cord2.lng
+//     },
+//     dataType:"jsonp",
+//     type:"GET",
+//     jsonpCallback: "jsonCallback",
+//     crossDomain : true
     
-  }).then(function(response){
-    console.log(response);
-  });
+//   }).then(function(response){
+//     console.log(response);
+//   });
 
-}
+// }
 
 function getVideos(){
   $.get("/content/youtube", function(data){
