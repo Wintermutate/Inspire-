@@ -40,6 +40,9 @@ h1 {
         font-size: 15px;
         line-height: 1.6
     }
+    #greeting {
+      margin-top: -50px;
+    }
 }
 
 .light {
@@ -246,7 +249,9 @@ h1 {
 
 span {
   position: absolute;
-  right: 15px;
+  top: 0;
+  right: 80px;
+  padding-top: 7px;
 }
 
 
@@ -296,9 +301,13 @@ div.panel.show {
   color: black;
 }
 
-.events {
+#map, .events {
   height: 180px;
   width: 360px;
+}
+
+.eventList a {
+  color: #00A1D9;
 }
 
 .header .logout-button,
@@ -691,5 +700,58 @@ a.animated-button.victoria-three:after {
 a.animated-button.victoria-three:hover:after {
   height: 140%;
   opacity: 1;
+}
+
+/*media queries for toggling navbar and sidebar*/
+@media (max-width: 1199px) {
+    #greeting {
+      margin-left: -200px;
+    }
+}
+@media (max-width: 991px) {
+    #greeting {
+      margin-left: -300px;
+    }
+}
+@media (max-width: 890px) {
+    input {
+      width: 100px;
+    }
+    #email {
+      margin-left: -500px;
+    }
+    #password {
+      margin-left: -400px;
+    }
+    #login {
+      margin-left: -300px;
+    }
+    #sign {
+      margin-left: -20px;
+    }
+}
+@media (max-width: 810px) {
+    #greeting {
+      margin-left: -500px;
+    }
+}
+@media (max-width: 767px) {
+    .navbar-toggle {
+      margin-right: 150px;
+      margin-top: 20px;
+    }
+    #email, #password {
+      margin-left: 100px;
+      width: 150px;
+    }
+    #login {
+      margin-left: 250px;
+    }
+    #greeting {
+      margin-left: 0px;
+      position: absolute;
+      top: 65px;
+      left: 25px;
+    }
 }
 
