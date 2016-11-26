@@ -292,6 +292,9 @@ div.panel.show {
   height: 180px;
   width: 360px;
 }*/
+#map, .events {
+  color: black;
+}
 
 .events {
   height: 180px;
