@@ -547,6 +547,7 @@ div.panel.show {
 .content .image {
     /*height: 300px;
     width: 300px;*/
+    vertical-align: top;
     -moz-box-shadow: 0 0 20px #47D9BF;
     -webkit-box-shadow: 0 0 20px #47D9BF;
     box-shadow: 0 0 20px #47D9BF;

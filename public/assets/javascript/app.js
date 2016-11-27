@@ -6,8 +6,9 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-var vidArray;// = ['RYlCVwxoL_g', 'u2cMjeSvZSs', 'c1H92b_uLdU', 'eqhUHyVpAwE', '9vdN15--hro', 'xJ9e32MNEOk', 'g-jwWYX7Jlo', 'mgmVOuLgFB0', 'CPQ1budJRIQ', 'XNj_KDPp_iM', 'PyDlBy5tgYA'];
-var songArray;// =["2HHtWyy5CgaQbC7XSoOb0e","2KxIMZDazuXN3yvPC6Kqwn", "2zvXUc9nn5Uwer8dbWxN8F"];
+var vidArray;
+var songArray;
+var quotesArray;
 
 var APIArray = [youtubeAPI, quotesAPI, imageAPI, spotifyAPI];
 
@@ -27,7 +28,17 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
+function emptyContent(){
+  var timeAnimation = 700;
+  $('.content').fadeOut(timeAnimation, function(){
+     $('#player').remove();
+ var youtubeDiv = $('<div>').attr('id', 'player');
+ youtubeDiv.prependTo('.content');
+ $('#quote').empty();
+ $('.image').attr('src', '');
+ $('iframe').remove();
+ });
+ }
 // sidebar
 function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
@@ -70,19 +81,10 @@ function youtubeAPI() {
                  });
 
 }
+
 function quotesAPI() {
-  $.ajax({
-            url: "http://api.forismatic.com/api/1.0/",
-            jsonp: "jsonp",
-            dataType: "jsonp",
-            data: {
-              method: "getQuote",
-              lang: "en",
-              format: "jsonp"
-            }
-         }).then(function(response) {
-            $("#quote").empty().text(response.quoteText);
-        });
+  var currenQuote = quotesArray[Math.floor(Math.random()*quotesArray.length)].content;
+  $("#quote").text(currenQuote);
 }
 
 function imageAPI(){
@@ -132,7 +134,17 @@ $('#inspire').on('click', function(){
   });
   $('.content').fadeIn(timeAnimation);
 })
-
+$("#overload").on("click", function (){
+  emptyContent();
+  setTimeout(function(){
+    for(i=0;i<APIArray.length;i++){
+    APIArray[i]();
+    console.log(APIArray[i]);
+  }
+     $('.content').fadeIn(700);
+}, 700);
+;
+});
 function onYouTubeIframeAPIReady() {
   randomContent();
 }
@@ -315,6 +327,13 @@ function getSongs(){
   })
 }
 
+function getQuotes(){
+  $.get("/content/quotes", function(data){
+    quotesArray = data;
+    console.log(data);
+  })
+}
+
 //Testing POST (inserting data)
 function newData(content, contentType) {
   $.post("/content/new", { content: content, contentType: contentType }, function(data) {
@@ -340,6 +359,7 @@ function saveContent(email, content) {
 
 getVideos();
 getSongs();
+getQuotes();
 //getFavorites("test@gmail.com");
 //saveContent('test@gmail.com','eqhUHyVpAwE');
 //newData();
