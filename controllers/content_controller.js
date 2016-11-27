@@ -30,14 +30,15 @@ router.post('/new', function(req, res) {
   .then(function(data){
     if(data.length > 0) { // Send '400' error
       res.statusMessage = "Duplicate entry";
-      res.sendStatus(400);
+      res.status(400);
     }
     else {
       models.Usersmeta.create({
         content: req.body.content,
         content_type: req.body.contentType
       }).then(function(instance) { // Successful insert
-        res.sendStatus(200);        
+        res.status(200);
+        res.json(instance);        
       })
     }
   })

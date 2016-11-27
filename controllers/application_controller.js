@@ -9,5 +9,8 @@ router.get('/', function(req, res) {
 
 router.get('/home', function(req, res){
 	res.sendFile(path.join(__dirname + '/../public/index.html'));
+});
+router.get('/admin', function(req, res){
+	res.sendFile(path.join(__dirname + '/../public/CMS.html'));
 })
 module.exports = router;
