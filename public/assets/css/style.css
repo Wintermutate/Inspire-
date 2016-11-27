@@ -5,7 +5,6 @@ html,
     width: 100%;
 }
 
-.navbar-custom,
 body {
     background-color: #000
 
@@ -20,7 +19,9 @@ body {
 /*#map {
      width: 100%;
 }*/
-
+.login-form{
+  color:black;
+}
 .btn,
 .navbar-custom,
 h1 {
@@ -91,7 +92,9 @@ h1 {
 }
 /*ombre affect*/
 .navbar-custom {
-  background-image: url("../images/gray-gradient.png");
+  background-color: #FFFFFF;
+  opacity: 0.6; 
+  
 }
 
 
