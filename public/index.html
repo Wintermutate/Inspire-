@@ -2,13 +2,10 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Inspirational Overload</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,191 +15,190 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-
     <link href="assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <div class="row">
-    <nav class="navbar navbar-custom" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
+        <nav class="navbar navbar-custom" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                        <p id="menu">Menu <i class="fa fa-bars"></i></p>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">
                     Inspire
                 </a>
-            </div>
-            <div data-header class="user-authorization collapse navbar-collapse navbar-right navbar-main-collapse">
-                <form data-login-form class="login-form form-inline" onsubmit="return false;">
-                    <div class="form-group">
-                        <label class="sr-only" for="exampleInputEmail">Email</label>
-                        <input type="email" class="login-username form-control-sm" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="exampleInputPassword">Password</label>
-                        <input type="password" class="form-control-sm" id="password" placeholder="Password">
-                    </div>
-                    <button data-login-button class="login-button btn btn-sm" id="login">
-                        <a href="#" class="btn btn-sm animated-button thar-one">Login</a>
-                    </button>
-                    <!-- Trigger/Open The Modal -->
-                    <button class="btn btn-sm" id="sign">
-                        <a href="#" type="signup" class="btn btn-sm animated-button thar-two" id="myBtn">Sign Up</a>
-                    </button>
+                </div>
+                <div data-header class="user-authorization collapse navbar-collapse navbar-right navbar-main-collapse">
+                    <form data-login-form class="login-form form-inline" onsubmit="return false;">
+                        <div class="form-group">
+                            <label class="sr-only" for="exampleInputEmail">Email</label>
+                            <input type="email" class="login-username form-control-sm" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="exampleInputPassword">Password</label>
+                            <input type="password" class="form-control-sm" id="password" placeholder="Password">
+                        </div>
+                        <button data-login-button class="login-button btn btn-sm" id="login">
+                            <a href="#" class="btn btn-sm animated-button thar-one">Login</a>
+                        </button>
+                        <!-- Trigger/Open The Modal -->
+                        <button class="btn btn-sm" id="sign">
+                            <a href="#" type="signup" class="btn btn-sm animated-button thar-two" id="myBtn">Sign Up</a>
+                        </button>
                 </div>
                 <div class="user-authorization collapse navbar-collapse navbar-right navbar-main-collapse" id="logged">
                     <form data-login-form action="" class="login-form" onsubmit="return false;">
                     </form>
                     <div data-login-user class="login-user state-hidden" id="greeting">
-                         Hello, username.
-                    <button data-logout-button class='logout-button btn btn-sm'>
-                        <a href="#" class="btn btn-sm animated-button victoria-three" id="logout">Logout</a></button>
+                        Hello, username.
+                        <button data-logout-button class='logout-button btn btn-sm'>
+                            <a href="#" class="btn btn-sm animated-button victoria-three" id="logout">Logout</a></button>
                     </div>
                 </div>
-                    <!-- The Modal -->
-                    <div id="myModal" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">×</span>
-                            <h2 class="text-center">Sign Up</h2>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-3"></div>
-                                        <div class="col-md-6 text-center">
-                                            <label for="exampleInputEmail1" class="text-center">Email</label>
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3"></div>
-                                        <div class="col-md-6 text-center">
-                                            <input type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-3"></div>
-                                        <div class="col-md-6 text-center">
-                                            <label for="exampleInputPassword1" class="text-center">Password</label>
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3"></div>
-                                        <div class="col-md-6 text-center">
-                                            <input type="password" class="form-control text-center" id="exampleInputPassword1" placeholder="Password">
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                    </div>
-                                </div>
-                            </form>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button data-login-button type="creatingSignUp" class=" login-button btn btn-sm center-block" id="signin"><a href="#" class="btn btn-sm animated-button victoria-three">Sign Up</a></button>
-                        
-                        </div>
-                    <!-- end of modalstuff -->
-                    </div>
                 </form>
             </div>
             <!-- hamburger sidebar -->
-                <span id="saved" style="font-size:40px;cursor:pointer" onclick="openNav()">&#9776;</span>
-        </div>
+            <span id="saved" style="font-size:40px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
     </nav>
+    <!-- moved the modal outside of nav
+-->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">×</span>
+                <h2 class="text-center">Sign Up</h2>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 text-center">
+                                <label for="exampleInputEmail1" class="text-center">Email</label>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 text-center">
+                                <input type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 text-center">
+                                <label for="exampleInputPassword1" class="text-center">Password</label>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 text-center">
+                                <input type="password" class="form-control text-center" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button data-login-button type="creatingSignUp" class=" login-button btn btn-sm center-block" id="signin"><a href="#" class="btn btn-sm animated-button victoria-three">Sign Up</a></button>
+            </div>
+        </div>
+        <!-- end of modalstuff -->
     </div>
     <!-- sidebar -->
-        <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <h2 class="text-center">user</h2>
-            <button class="accordion">Videos</button>
-            <div class="panel">
-                <table class="table table-hover">
-                    <tr>
-                        <th>Video</th>
-                        <th>Time</th>
-                        <th>Date</th>
-                    </tr>
-                </table>
-            </div>
-            <button class="accordion">Quotes</button>
-            <div class="panel">
-                <table class="table table-hover">
-                    <tr>
-                        <th>Quote</th>
-                        <th>Time</th>
-                        <th>Date</th>
-                    </tr>
-                </table>
-            </div>
-            <button class="accordion">Songs</button>
-            <div class="panel">
-                <table class="table table-hover">
-                    <tr>
-                        <th>Song</th>
-                        <th>Time</th>
-                        <th>Date</th>
-                    </tr>
-                </table>
-            </div>
+        <h2 class="text-center">user</h2>
+        <button class="accordion">Videos</button>
+        <div class="panel">
+            <table class="table table-hover">
+                <tr>
+                    <th>Video</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+            </table>
         </div>
-        <!-- end sidebar -->
-        <div class="main">
-            <div class="main-body">
-                <div class="container">
-                    <div class="row">
+        <button class="accordion">Quotes</button>
+        <div class="panel">
+            <table class="table table-hover">
+                <tr>
+                    <th>Quote</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+            </table>
+        </div>
+        <button class="accordion">Songs</button>
+        <div class="panel">
+            <table class="table table-hover">
+                <tr>
+                    <th>Song</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- end sidebar -->
+    <div class="main">
+        <div class="main-body">
+            <div class="container">
+                <div class="row">
                     <div class="col-md-4">
                         <div id="map"></div>
                         <h2 class="groupName"></h2>
-                           <div class="events">
-                               <h3>Events</h3>
-                               <div class="eventList">
-                                   
-                               </div>
-                           </div>
+                        <div class="events">
+                            <h3>Events</h3>
+                            <div class="eventList">
+                            </div>
+                        </div>
                     </div>
-                        <div class="col-md-8">
-                            <div class="content">
-                                <div id="player"></div>
-                                <p id="quote"></p>
-                                <img src="" class="image">
+                    <div class="col-md-8">
+                        <div class="content">
+                            <div id="player"></div>
+                            <p id="quote"></p>
+                            <img src="" class="image">
                             <!-- <a href="https://www.pinterest.com/janew/inspiration/"
                                data-pin-do="embedBoard"
                                data-pin-board-width="560"
                                data-pin-scale-height="420"
                                data-pin-scale-width="150"
                                id="pinboard">
-                            </a>        -->                     
-                            </div>
+                            </a>        -->
                         </div>
                     </div>
                 </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a href="#" class="ghst-btn" id="inspire">Inspire!</a>
-                        </div>
-                            <!-- <button class="btn btn-lg" id="inspire">Inspire Me!</button> -->
-                        <div class="col-md-3">
-                            <a href="#" class="ghst-btn2">Save</a>
-                        </div>
-                            <!-- <button class="btn btn-lg" id="save">Save</button> -->
-                        <div class="col-md-3">
-                            <a href="#" class="ghst-btn" id="overload">Inspirational Overload!</a>
-                        </div>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <a href="#" class="ghst-btn center-block" id="inspire">Inspire!</a>
+                </div>
+                <!-- <button class="btn btn-lg" id="inspire">Inspire Me!</button> -->
+                <div class="col-md-3">
+                    <a href="#" class="ghst-btn2 center-block">Save</a>
+                </div>
+                    <!-- <button class="btn btn-lg" id="save">Save</button> -->
+                <div class="col-md-3">
+                    <a href="#" class="ghst-btn3 center-block" id="overload">Inspirational Overload!</a>
+                </div>
+                <div class="col-md-1"></div>
             </div>
         </div>
+    </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwWhFI5G61GrAWmITWKwtq93Btg1zS3mA&callback=initMap"></script>
     <script src="assets/javascript/app.js"></script>
-    </body>
-    </html>
+</body>
+
+</html>
