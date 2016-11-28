@@ -32,6 +32,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
 function emptyContent(){
   var timeAnimation = 700;
   $('.content').fadeOut(timeAnimation, function(){
@@ -43,6 +44,7 @@ function emptyContent(){
  $('iframe').remove();
  });
  }
+
 // sidebar
 function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
@@ -74,9 +76,13 @@ $('document').ready(function(){
 });
 
 
-function youtubeAPI() { 
-
+function youtubeAPI(content) { 
+if (content == undefined){
   var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)].content;
+ }else {
+  currentVideo = content;
+ }
+  
   currentUserContent = currentVideo;
   var player = new YT.Player("player", {
                       height: '360',
@@ -86,10 +92,15 @@ function youtubeAPI() {
 
 }
 
-function quotesAPI() {
-  var currenQuote = quotesArray[Math.floor(Math.random()*quotesArray.length)].content;
-  currentUserContent = currenQuote;
-  $("#quote").text(currenQuote);
+function quotesAPI(content) {
+  if (content == undefined){
+   var currentQuote = quotesArray[Math.floor(Math.random()*quotesArray.length)].content;
+ }else {
+  currentQuote = content;
+ }
+
+  currentUserContent = currentQuote;
+  $("#quote").text(currentQuote);
 }
 
 function imageAPI(){
@@ -109,9 +120,13 @@ function imageAPI(){
         });
 }
 
-function spotifyAPI(){
+function spotifyAPI(content){
   var spotifyURL = "https://embed.spotify.com/?uri=spotify%3Atrack%3A";
-  var randomSong = songArray[Math.floor(Math.random()*songArray.length)].content;
+  if (content == undefined){
+  var randomSong = songArray[Math.floor(Math.random()*songArray.length)].content;  
+ }else {
+  randomSong = content;
+ }
   currentUserContent = randomSong;
   var spotifyFrame = $("<iframe>");
   spotifyFrame.attr("src", spotifyURL + randomSong);
@@ -152,9 +167,11 @@ $("#overload").on("click", function (){
   }, 700);
 });
 
-$("#save").on("click", function(){
-
+$("#saveContent").on("click", function(){
+  console.log(currentUser);
+  console.log(currentUserContent);
   saveContent(currentUser, currentUserContent);
+
 });
 function onYouTubeIframeAPIReady() {
   randomContent();
@@ -356,7 +373,30 @@ function newData(content, contentType) {
 // Get favorites of current user(provide email)
 function getFavorites(email) {
   $.get("/favorites/" + email, function(data) {
-    console.log(data);
+    for(i=0; i<data.length; i++){
+      var tableRow = $("<tr>");
+      var tableDataContent = $("<td>");
+      var tableDataDate = $("<td>");
+      var tableDataTime = $("<td>");
+      var dateTime = data[i].createdAt.split("T");
+      tableDataContent.text(data[i].content);
+      tableDataDate.text(dateTime[0]);
+      tableDataTime.text(dateTime[1]);
+      tableRow.append(tableDataContent);
+      tableRow.append(tableDataDate);
+      tableRow.append(tableDataTime);
+      switch (data[i].content_type){
+        case "spotify":
+          $("#favSongs").append(tableRow);
+        break;
+        case "youtube":
+          $("#favVideos").append(tableRow);
+        break;
+        case "quotes":
+          $("#favQuotes").append(tableRow);
+        break;        
+      }
+    }
   })
 }
 
@@ -370,6 +410,43 @@ function saveContent(email, content) {
 getVideos();
 getSongs();
 getQuotes();
-//getFavorites("test@gmail.com");
+$('document').ready(function(){
+$("#saved").on("click", function(){
+  $("#favSongs tr:not(:first-child)").remove();
+  $("#favVideos tr:not(:first-child)").remove();
+  $("#favQuotes tr:not(:first-child)").remove();
+  getFavorites(currentUser);
+});
+$("#favVideos").on("click", "tr:not(:first-child)", function() {
+ var clickedSavedContent = $(this).children("td:first-child");
+  console.log(clickedSavedContent.text());
+  console.log(this);
+  emptyContent();
+  setTimeout(function(){
+     youtubeAPI(clickedSavedContent.text());   
+     $('.content').fadeIn(700);
+  }, 800); 
+});
+$("#favSongs").on("click", "tr:not(:first-child)", function() {
+  var clickedSavedContent = $(this).children("td:first-child");
+  console.log(clickedSavedContent.text());
+  console.log(this);
+  emptyContent();
+  setTimeout(function(){
+     spotifyAPI(clickedSavedContent.text());   
+     $('.content').fadeIn(700);
+  }, 800); 
+});
+$("#favQuotes").on("click", "tr:not(:first-child)", function() {
+ var clickedSavedContent = $(this).children("td:first-child");
+  console.log(clickedSavedContent.text());
+  console.log(this);
+  emptyContent();
+  setTimeout(function(){
+     quotesAPI(clickedSavedContent.text());   
+     $('.content').fadeIn(700);
+  }, 800); 
+});
+});
 //saveContent('test@gmail.com','eqhUHyVpAwE');
 //newData();
