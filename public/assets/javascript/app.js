@@ -9,6 +9,10 @@ var span = document.getElementsByClassName("close")[0];
 var vidArray;
 var songArray;
 var quotesArray;
+var currentUser ="random@random.com";
+var currentUserContent;
+var map;
+var currentPos;
 
 var APIArray = [youtubeAPI, quotesAPI, imageAPI, spotifyAPI];
 
@@ -73,7 +77,7 @@ $('document').ready(function(){
 function youtubeAPI() { 
 
   var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)].content;
-
+  currentUserContent = currentVideo;
   var player = new YT.Player("player", {
                       height: '360',
                        width: '640',
@@ -84,6 +88,7 @@ function youtubeAPI() {
 
 function quotesAPI() {
   var currenQuote = quotesArray[Math.floor(Math.random()*quotesArray.length)].content;
+  currentUserContent = currenQuote;
   $("#quote").text(currenQuote);
 }
 
@@ -99,13 +104,15 @@ function imageAPI(){
                 "X-Mashape-Key": "DajIhcCO6emsh8uKH4Y06OID3hgUp12rSMHjsn9mLyW1nCivlD"
             }
          }).then(function(response) {
-            $('.image').attr('src', response[0].media)
+            currentUserContent = response[0].media;
+            $('.image').attr('src', response[0].media);
         });
 }
 
 function spotifyAPI(){
   var spotifyURL = "https://embed.spotify.com/?uri=spotify%3Atrack%3A";
   var randomSong = songArray[Math.floor(Math.random()*songArray.length)].content;
+  currentUserContent = randomSong;
   var spotifyFrame = $("<iframe>");
   spotifyFrame.attr("src", spotifyURL + randomSong);
   spotifyFrame.attr("width", "300");
@@ -140,16 +147,19 @@ $("#overload").on("click", function (){
     for(i=0;i<APIArray.length;i++){
     APIArray[i]();
     console.log(APIArray[i]);
-  }
+   }
      $('.content').fadeIn(700);
-}, 700);
-;
+  }, 700);
+});
+
+$("#save").on("click", function(){
+
+  saveContent(currentUser, currentUserContent);
 });
 function onYouTubeIframeAPIReady() {
   randomContent();
 }
-var map;
-var currentPos;
+
 
   // Geolocation
 function initMap() {
