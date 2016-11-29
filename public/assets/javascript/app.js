@@ -173,8 +173,14 @@ $("#saveContent").on("click", function(){
   saveContent(currentUser, currentUserContent);
 
 });
-function onYouTubeIframeAPIReady() {
-  randomContent();
+
+function onYouTubeIframeAPIReady() {  
+  getVideos();
+  getSongs();
+  getQuotes();
+  setTimeout(function(){
+    randomContent();
+  }, 2000);
 }
 
 
@@ -407,9 +413,6 @@ function saveContent(email, content) {
   })
 }
 
-getVideos();
-getSongs();
-getQuotes();
 $('document').ready(function(){
 $("#saved").on("click", function(){
   $("#favSongs tr:not(:first-child)").remove();

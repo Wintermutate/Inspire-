@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "inspire_db",
-    "host": "127.0.0.1",
+    "username": "xy6v330v9cjxtxb9",
+    "password": "fbyc5cm8fpdofona",
+    "database": "vvr160b5ib65hzjq",
+    "host": "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
