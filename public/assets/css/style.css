@@ -352,7 +352,7 @@ div.panel.show {
 }*/
 
 /*ghost button*/
-.ghst-btn {
+.ghst-btn, .ghst-btn2, .ghst-btn3 {
   position: relative;
   display: inline-block;
   top: 35%;
@@ -388,7 +388,12 @@ div.panel.show {
     border-radius 0.4s;
   margin-top: 35px;
 }
-.ghst-btn:hover {
+
+.ghst-btn3 {
+  max-width: 25rem;
+}
+
+.ghst-btn:hover, .ghst-btn2:hover, .ghst-btn3:hover {
   max-width: 10rem;
   min-height: 10rem;
   color: transparent;
@@ -409,11 +414,17 @@ div.panel.show {
 
 }
 .ghst-btn:before,
-.ghst-btn:after {
+.ghst-btn:after, 
+.ghst-btn2:before, 
+.ghst-btn2:after,
+.ghst-btn3:before,
+.ghst-btn3:after {
   position: absolute;
   transition: all 0.25s;
 }
-.ghst-btn:before {
+.ghst-btn:before, 
+.ghst-btn2:before,
+.ghst-btn3:before {
   content:'Get Inspired!';
   top: 50%;
   left: 50%;
@@ -425,199 +436,15 @@ div.panel.show {
     color 0s,
     transform 0s;
 }
-.ghst-btn:after {
-  content:'';
-  top: 70%;
-  left: 20%;
-  width: 60%;
-  height: 7%;
-  background: none;
-  border-radius: 50%;
-  box-shadow: 0 5rem 15px rgba(0,0,0,0.15);
-  opacity: 0;
-  transition: opacity 0.05s;
-}
-.ghst-btn:hover:before {
-  color: #ffffff;
-  transform: scale(1.3) translateX(55%) translateY(-110%);
-  transition:
-    color 0.05s 0.8s,
-    transform 0.1s 0.8s;
-}
-.ghst-btn:hover:after {
-  opacity: 1;
-  transition: opacity 0.2s 0.5s;
-}
-
-.ghst-btn2 {
-  position: relative;
-  display: inline-block;
-  top: 35%;
-  width: auto;
-  height: auto;
-  max-width: 20rem;
-  min-height: 1rem;
-  padding: 1rem 2rem 0.8rem 2rem;
-  border: 2px solid #04518C;
-  background-color: #04518C;
-  background-image:
-    radial-gradient(#333 0%, #333 70%, transparent 71%, transparent 100%),
-    radial-gradient(#333 0%, #333 70%, transparent 71%, transparent 100%),
-    radial-gradient(#333 0%, #333 70%, transparent 71%, transparent 100%);
-  background-size: 0 0, 0 0, 0 0;
-  background-repeat: no-repeat;
-  background-position: 30% 50%, 70% 50%, 50% 80%;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
-  border-radius: 0;
-  transform: rotate(0);
-  transition:
-    border 2.5s 1s,
-    color 2s 0.6s,
-    max-width 0.05s 0.6s, 
-    min-height 0.05s 0.6s, 
-    background-color 0.4s,
-    background-size 0s,
-    transform 0.4s,
-    border-radius 0.4s;
-  margin-top: 35px;
-}
-.ghst-btn2:hover {
-  max-width: 10rem;
-  min-height: 10rem;
-  color: transparent;
-  border: 2px solid #04518C;
-  border-radius: 50%;
-  background-color: #04518C;
-  background-size: 1.5rem 1.5rem, 1.5rem 1.5rem, 1.5rem 1rem;
-  transform: rotate(400grad);
-  transition:
-    border 0.1s,
-    color 0.15s,
-    max-width 0.25s, 
-    min-height 0.25s, 
-    background-color 0.25s,
-    background-size 0.15s 0.45s,
-    transform 0.4s,
-    border-radius 0.25s 0.3s;
-}
-.ghst-btn2:before,
-.ghst-btn2:after {
-  position: absolute;
-  transition: all 0.25s;
-}
 .ghst-btn2:before {
-  content:'Save';
-  top: 50%;
-  left: 50%;
-  color: #04518C;
-  font-weight: 800;
-  letter-spacing: 0;
-  transform: scale(0) translateX(0) translateY(0);
-  transition:
-    color 0s,
-    transform 0s;
-}
-.ghst-btn2:after {
-  content:'';
-  top: 70%;
-  left: 20%;
-  width: 60%;
-  height: 7%;
-  background: none;
-  border-radius: 50%;
-  box-shadow: 0 5rem 15px rgba(0,0,0,0.15);
-  opacity: 0;
-  transition: opacity 0.05s;
-}
-.ghst-btn2:hover:before {
-  color: #ffffff;
-  transform: scale(1.3) translateX(55%) translateY(-110%);
-  transition:
-    color 0.05s 0.8s,
-    transform 0.1s 0.8s;
-}
-.ghst-btn2:hover:after {
-  opacity: 1;
-  transition: opacity 0.2s 0.5s;
-}
-
-.ghst-btn3 {
-  position: relative;
-  display: inline-block;
-  top: 35%;
-  width: auto;
-  height: auto;
-  max-width: 25rem;
-  min-height: 1rem;
-  padding: 1rem 2rem 0.8rem 2rem;
-  border: 2px solid #04518C;
-  background-color: #04518C;
-  background-image:
-    radial-gradient(#333 0%, #333 70%, transparent 71%, transparent 100%),
-    radial-gradient(#333 0%, #333 70%, transparent 71%, transparent 100%),
-    radial-gradient(#333 0%, #333 70%, transparent 71%, transparent 100%);
-  background-size: 0 0, 0 0, 0 0;
-  background-repeat: no-repeat;
-  background-position: 30% 50%, 70% 50%, 50% 80%;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
-  border-radius: 0;
-  transform: rotate(0);
-  transition:
-    border 2.5s 1s,
-    color 2s 0.6s,
-    max-width 0.05s 0.6s, 
-    min-height 0.05s 0.6s, 
-    background-color 0.4s,
-    background-size 0s,
-    transform 0.4s,
-    border-radius 0.4s;
-  margin-top: 35px;
-}
-.ghst-btn3:hover {
-  max-width: 10rem;
-  min-height: 10rem;
-  color: transparent;
-  border: 2px solid rgba(255,255,255,0);
-  border-radius: 50%;
-  background-color: #04518C;
-  background-size: 1.5rem 1.5rem, 1.5rem 1.5rem, 1.5rem 1rem;
-  transform: rotate(400grad);
-  transition:
-    border 0.1s,
-    color 0.15s,
-    max-width 0.25s, 
-    min-height 0.25s, 
-    background-color 0.25s,
-    background-size 0.15s 0.45s,
-    transform 0.4s,
-    border-radius 0.25s 0.3s;
-
-}
-.ghst-btn3:before,
-.ghst-btn3:after {
-  position: absolute;
-  transition: all 0.25s;
+  content: 'Save';
 }
 .ghst-btn3:before {
-  content:'Overload!';
-  top: 50%;
-  left: 50%;
-  color: #ffffff;
-  font-weight: 800;
-  letter-spacing: 0;
-  transform: scale(0) translateX(0) translateY(0);
-  transition:
-    color 0s,
-    transform 0s;
+  content: 'Overload!';
 }
+
+.ghst-btn:after,
+.ghst-btn2:after,
 .ghst-btn3:after {
   content:'';
   top: 70%;
@@ -630,6 +457,8 @@ div.panel.show {
   opacity: 0;
   transition: opacity 0.05s;
 }
+.ghst-btn:hover:before,
+.ghst-btn2:hover:before,
 .ghst-btn3:hover:before {
   color: #ffffff;
   transform: scale(1.3) translateX(55%) translateY(-110%);
@@ -637,6 +466,8 @@ div.panel.show {
     color 0.05s 0.8s,
     transform 0.1s 0.8s;
 }
+.ghst-btn:hover:after,
+.ghst-btn2:hover:after,
 .ghst-btn3:hover:after {
   opacity: 1;
   transition: opacity 0.2s 0.5s;
