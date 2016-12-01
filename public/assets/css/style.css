@@ -360,21 +360,23 @@ div.panel.show {
 }
 /*cms*/
 #title, #title2 {
-  background-color: #04518C;
-  color: #fff;
-  font-size: 30px;
-  width: 50%;
+    font-size: 30px;
+    font-weight: 200;
+    text-shadow: 1px 1px 1px #000, 
+               3px 3px 5px #c8c8c8;
+    color: #00A1D9;
 }
 
 #title2{
-  background-color: #ff0000;
   margin-top: 50px;
+  color: #ff0000;
 }
 #exampleInputEmail1, #exampleInputPassword1 {
-  width: 100%;
   margin-top: 25px;
   height: 50px;
   font-size: 20px;
+  /*color: #47D9BF;*/
+  color: #00A1D9;
 }
 /*ghost button*/
 .ghst-btn, .ghst-btn2, .ghst-btn3 {
