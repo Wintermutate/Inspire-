@@ -314,12 +314,13 @@ function newData(content, contentType) {
 // Get favorites of current user(provide email)
 function getFavorites(email) {
   $.get("/favorites/" + email, function(data) {
+    console.log(data);
     for(i=0; i<data.length; i++){
       var tableRow = $("<tr>");
       var tableDataContent = $("<td>");
       var tableDataDate = $("<td>");
       var tableDataTime = $("<td>");
-      var dateTime = data[i].createdAt.split("T");
+      var dateTime = data[i].favorites.createdAt.split("T");
       tableDataContent.text(data[i].content);
       tableDataDate.text(dateTime[0]);
       tableDataTime.text(dateTime[1]);
