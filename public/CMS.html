@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
 
     <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/CMSchange.css">
 
 </head>
 
@@ -165,34 +166,33 @@
                     <form method="POST" action="/content/new" id="contain-form">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6 text-center" id="title">
-                                    <label for="exampleInputEmail1" class="text-center">Content</label>
+                                <div class="col-md-3" id="instruct1">
+                                     <h2>Instructions</h2>
+                                     <h4>Input a Video</h4>
+                                     <a href="https://www.youtube.com/results?search_query=inspirational" target="_blank">
+                                     <img src="assets/images/youtube.ico" alt="Youtube" style="width:40px;height:40px">
+                                     </a>
+                                     <ol>
+                                     <li>For the content: Put video index number in the href after "v="</li>
+                                     <li>For the content type: type lower case "youtube"</li>
+                                     <li>Click the "Submit" button in the right corner</li>
+                                     </ol>
+                                     <img src="assets/images/done.png" alt="done" style="width:40px;height:40px"> done!
                                 </div>
-                            <div class="col-md-3"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6 text-center">
+                                <b><div class="col-md-6 text-center">
+                                    <label for="exampleInputEmail1" class="text-center" id="title">Content</label>
                                     <input type="text" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Content"
                                     name="content">
-                                </div>
-                                <div class="col-md-3"></div>
+                                    <label for="exampleInputPassword1" class="text-center" id="title2">Content Type</label>
+                                    <input type="text" class="form-control text-center" id="exampleInputPassword1" placeholder="Content Type" name="contentType">
+                                </div></b>
+                            <div class="col-md-3"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6 text-center" id="title2">
-                                    <label for="exampleInputPassword1" class="text-center">Content Type</label>
-                                </div>
-                                <div class="col-md-3"></div>
-                            </div>
-                            <div class="row">
                                  <div class="col-md-3"></div>
-                                 <div class="col-md-6 text-center">
-                                    <input type="text" class="form-control text-center" id="exampleInputPassword1" placeholder="Content Type" name="contentType">
-                                 </div>
+                                 <div class="col-md-6"></div>
                                 <div class="col-md-3" id="submit-btn">   
                                         <a href="#" class="round green">Submit<span class="round">Submit Your Input Here!</span></a>
                                     <!-- <button type="submit" class="btn btn-default">Submit</button> -->
