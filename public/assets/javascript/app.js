@@ -33,18 +33,6 @@ window.onclick = function(event) {
     }
 }
 
-function emptyContent(){
-  var timeAnimation = 700;
-  $('.content').fadeOut(timeAnimation, function(){
-     $('#player').remove();
- var youtubeDiv = $('<div>').attr('id', 'player');
- youtubeDiv.prependTo('.content');
- $('#quote').empty();
- $('.image').attr('src', '');
- $('iframe').remove();
- });
- }
-
 // sidebar
 function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
@@ -59,139 +47,23 @@ var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
-    acc[i].onclick = function(){
-        this.classList.toggle("active");
-        this.nextElementSibling.classList.toggle("show");
+  acc[i].onclick = function(){
+    this.classList.toggle("active");
+    this.nextElementSibling.classList.toggle("show");
   }
 }
 
-//toggling login
-$('document').ready(function(){
-  
-  $('[data-login-button], [data-logout-button]').click(function(){
-    $('[data-login-form], [data-login-user]').toggleClass('state-hidden');
-    $('[data-header]').toggleClass('state-logged-in');
-  });
-  
+$('[data-login-button], [data-logout-button]').click(function(){
+  $('[data-login-form], [data-login-user]').toggleClass('state-hidden');
+  $('[data-header]').toggleClass('state-logged-in');
 });
-
-
-function youtubeAPI(content) { 
-if (content == undefined){
-  var currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)].content;
- }else {
-  currentVideo = content;
- }
   
-  currentUserContent = currentVideo;
-  var player = new YT.Player("player", {
-                      height: '360',
-                       width: '640',
-                       videoId: currentVideo,                      
-                 });
-
-}
-
-function quotesAPI(content) {
-  if (content == undefined){
-   var currentQuote = quotesArray[Math.floor(Math.random()*quotesArray.length)].content;
- }else {
-  currentQuote = content;
- }
-
-  currentUserContent = currentQuote;
-  $("#quote").text(currentQuote);
-}
-
-function imageAPI(){
-  $.ajax({
-            url: "https://healthruwords.p.mashape.com/v1/quotes/",
-            dataType: "json",
-            data: {
-              t: "Motivational",
-              size:"medium"
-            },
-            headers: {
-                "X-Mashape-Key": "DajIhcCO6emsh8uKH4Y06OID3hgUp12rSMHjsn9mLyW1nCivlD"
-            }
-         }).then(function(response) {
-            currentUserContent = response[0].media;
-            $('.image').attr('src', response[0].media);
-        });
-}
-
-function spotifyAPI(content){
-  var spotifyURL = "https://embed.spotify.com/?uri=spotify%3Atrack%3A";
-  if (content == undefined){
-  var randomSong = songArray[Math.floor(Math.random()*songArray.length)].content;  
- }else {
-  randomSong = content;
- }
-  currentUserContent = randomSong;
-  var spotifyFrame = $("<iframe>");
-  spotifyFrame.attr("src", spotifyURL + randomSong);
-  spotifyFrame.attr("width", "300");
-  spotifyFrame.attr("height", "300");
-  $(".content").append(spotifyFrame);
-}
-
-
-function randomContent(){
-  var currentContent = APIArray[Math.floor(Math.random()*APIArray.length)];
-  currentContent();
-  console.log('testing content');
-  }
-
-$('#inspire').on('click', function(){
-  console.log('test');
-    var timeAnimation = 700;
-  $('.content').fadeOut(timeAnimation, function(){
-     $('#player').remove();
- var youtubeDiv = $('<div>').attr('id', 'player');
- youtubeDiv.prependTo('.content');
- $('#quote').empty();
- $('.image').attr('src', '');
- $('iframe').remove();
- randomContent();
-  });
-  $('.content').fadeIn(timeAnimation);
-})
-$("#overload").on("click", function (){
-  emptyContent();
-  setTimeout(function(){
-    for(i=0;i<APIArray.length;i++){
-    APIArray[i]();
-    console.log(APIArray[i]);
-   }
-     $('.content').fadeIn(700);
-  }, 700);
-});
-
-$("#saveContent").on("click", function(){
-  console.log(currentUser);
-  console.log(currentUserContent);
-  saveContent(currentUser, currentUserContent);
-
-});
-
-function onYouTubeIframeAPIReady() {  
-  getVideos();
-  getSongs();
-  getQuotes();
-  setTimeout(function(){
-    randomContent();
-  }, 2000);
-}
-
-
-  // Geolocation
+// Geolocation
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 10
   });
-  //var infoWindow = new google.maps.InfoWindow({map: map});
-
   $("#map").height($("#map").width());
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -200,22 +72,17 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      //console.log(currentPos);
       var marker = new google.maps.Marker({
         position: currentPos,
         map: map,
         icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
         zIndex: 200
       });
-      //infoWindow.setPosition(pos);
-      //infoWindow.setContent('Current Location.');
       map.setCenter(currentPos);
       markGroups();
     }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
     });
-
-
   } else {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
@@ -224,9 +91,7 @@ function initMap() {
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(currentPos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
 }
 
 var markers = [];
@@ -253,7 +118,6 @@ function addMarker(location, map, urlname, groupInfo) {
       content: contentString 
     });
     infowindow.open(map, this);
-    //mapDirections(currentPos, location);
   })
 }
 
@@ -265,17 +129,12 @@ function markGroups() {
       data: {
         key: "1b167d2b5c2a66754245583622762e74",
         text: "inspirational",
-        // zip: "95816",
         lat: currentPos.lat,
         lon: currentPos.lng,
         radius: "25"
     }
   }).then(function(response) {
     for(var i = 0; i< response.data.length; i++){
-      // var group = $("<div>").addClass("group");
-      // group.text(response.data[i].name);
-      // group.appendTo(".content");
-      // group.data("name", response.data[i].name);
       var coord = {
         lat: response.data[i].lat,
         lng: response.data[i].lon
@@ -287,68 +146,146 @@ function markGroups() {
 }
 
 function getEvents(groupURL) {
- $.ajax({
-     url: "https://api.meetup.com/" + groupURL + "/events",
-     method: "GET",
-     dataType: "jsonp",
-     data: {
-       key: "1b167d2b5c2a66754245583622762e74",
-     }
- }).then(function(response) {
-       console.log(response);
-       if(response.data.length == 0) {
-           var event = $("<div>");
-           event.text("NO UPCOMING EVENTS");
-           event.appendTo(".eventList");
-       }
-       for(var i = 0; i < 1; i++) {
-           console.log("Events");
-           var event = $("<div>");
-           event.css("border", "solid black 2px");
-           //var description = $(response.data[i].description);
-           var name = $("<div>").text(response.data[i].name);
-           event.append(name);
-           if(response.data[i].venue) {
-            var address = $("<div>").text(response.data[i].venue.address_1);
-            var city_state = $("<div>").text(response.data[i].venue.city + ", " + response.data[i].venue.state);
-            event.append(address);
-            event.append(city_state);
-           }
-           var time = new Date(response.data[i].time);
-           var date = $("<div>").text(time.toDateString() + " " + time.toLocaleTimeString());
-           event.append(date);
-           var link = $("<a>").text("More Info").attr("href", response.data[i].link).attr("target", "_blank");
-           event.append($("<div>").append(link));
-           event.appendTo(".eventList");
-       }
- });
+  $.ajax({
+    url: "https://api.meetup.com/" + groupURL + "/events",
+    method: "GET",
+    dataType: "jsonp",
+    data: {
+      key: "1b167d2b5c2a66754245583622762e74",
+    }
+  }).then(function(response) {
+      if(response.data.length == 0) {
+        var event = $("<div>");
+        event.text("NO UPCOMING EVENTS");
+        event.appendTo(".eventList");
+      }
+      for(var i = 0; i < 1; i++) {
+        var event = $("<div>");
+        event.css("border", "solid black 2px");
+        var name = $("<div>").text(response.data[i].name);
+        event.append(name);
+        if(response.data[i].venue) {
+          var address = $("<div>").text(response.data[i].venue.address_1);
+          var city_state = $("<div>").text(response.data[i].venue.city + ", " + response.data[i].venue.state);
+          event.append(address);
+          event.append(city_state);
+        }
+        var time = new Date(response.data[i].time);
+        var date = $("<div>").text(time.toDateString() + " " + time.toLocaleTimeString());
+        event.append(date);
+        var link = $("<a>").text("More Info").attr("href", response.data[i].link).attr("target", "_blank");
+        event.append($("<div>").append(link));
+        event.appendTo(".eventList");
+      }
+  });
 }
 
-// function mapDirections(cord1, cord2){
-//   $.ajax(
-//     {url:"https://maps.googleapis.com/maps/api/directions/json", 
-//     data:{
-//       key:"AIzaSyBwWhFI5G61GrAWmITWKwtq93Btg1zS3mA",
-//       origin:cord1.lat + "," + cord1.lng,
-//       waypoints:cord2.lat + "," + cord2.lng,
-//       destination:cord2.lat + "," + cord2.lng
-//     },
-//     dataType:"jsonp",
-//     type:"GET",
-//     jsonpCallback: "jsonCallback",
-//     crossDomain : true
-    
-//   }).then(function(response){
-//     console.log(response);
-//   });
+function emptyContent(){
+  var timeAnimation = 700;
+  $('.content').fadeOut(timeAnimation, function(){
+    $('#youtubeplayer').remove();
+    var youtubeDiv = $('<div>').attr('id', 'youtubeplayer');
+    youtubeDiv.prependTo('.content');
+    $('#quote').empty();
+    $('.image').attr('src', '');
+    $('#spotifyplayer').remove();
+   });
+}
 
-// }
+function youtubeAPI(content) {
+  var currentVideo;
+  if(content == undefined){
+    currentVideo = vidArray[Math.floor(Math.random()*vidArray.length)].content;
+  } else {
+    currentVideo = content;
+  }
+  currentUserContent = currentVideo;
+  var player = new YT.Player("youtubeplayer", 
+  {
+    height: '360',
+    width: '640',
+    videoId: currentVideo,                      
+  });
 
+}
+
+function quotesAPI(content) {
+  var currentQuote;
+  if (content == undefined){
+    currentQuote = quotesArray[Math.floor(Math.random()*quotesArray.length)].content;
+  }else {
+    currentQuote = content;
+  }
+  currentUserContent = currentQuote;
+  $("#quote").text(currentQuote);
+}
+
+function spotifyAPI(content){
+  var spotifyURL = "https://embed.spotify.com/?uri=spotify%3Atrack%3A";
+  var randomSong;
+  if(content == undefined){
+    randomSong = songArray[Math.floor(Math.random()*songArray.length)].content;  
+  } else {
+    randomSong = content;
+  }  
+  currentUserContent = randomSong;
+  var spotifyFrame = $("<iframe>");
+  spotifyFrame.attr("src", spotifyURL + randomSong);
+  spotifyFrame.attr("width", "300");
+  spotifyFrame.attr("height", "300");
+  spotifyFrame.attr("id", "spotifyplayer");
+  $(".content").append(spotifyFrame);
+}
+
+function imageAPI(){
+  $.ajax({
+    url: "https://healthruwords.p.mashape.com/v1/quotes/",
+    dataType: "json",
+    data: {
+      t: "Motivational",
+      size:"medium"
+    },
+    headers: {
+      "X-Mashape-Key": "DajIhcCO6emsh8uKH4Y06OID3hgUp12rSMHjsn9mLyW1nCivlD"
+    }
+  }).then(function(response) {
+      currentUserContent = response[0].media;
+      $('.image').attr('src', response[0].media);
+  });
+}
+
+function randomContent(){
+  var currentContent = APIArray[Math.floor(Math.random()*APIArray.length)];
+  currentContent();
+}
+
+$('#inspire').on('click', function(){
+  var timeAnimation = 700;
+  $('.content').fadeOut(timeAnimation, function(){
+    $('#youtubeplayer').remove();
+    var youtubeDiv = $('<div>').attr('id', 'youtubeplayer');
+    youtubeDiv.prependTo('.content');
+    $('#quote').empty();
+    $('.image').attr('src', '');
+    $('#spotifyplayer').remove();
+    randomContent();
+  });
+  $('.content').fadeIn(timeAnimation);
+})
+
+$("#overload").on("click", function (){
+  emptyContent();
+  setTimeout(function(){
+    for(i=0;i<APIArray.length;i++){
+      APIArray[i]();
+    }
+     $('.content').fadeIn(700);
+  }, 1000);
+});
 // Retrive 'youtube' content
 function getVideos(){
   $.get("/content/youtube", function(data){
     vidArray = data;
-    console.log(data);
   })
 }
 
@@ -356,14 +293,12 @@ function getVideos(){
 function getSongs(){
   $.get("/content/spotify", function(data){
     songArray = data;
-    console.log(data);
   })
 }
 
 function getQuotes(){
   $.get("/content/quotes", function(data){
     quotesArray = data;
-    console.log(data);
   })
 }
 
@@ -406,50 +341,49 @@ function getFavorites(email) {
   })
 }
 
+$("#saveContent").on("click", function(){
+  saveContent(currentUser, currentUserContent);
+});
+
 // Add to favorites
 function saveContent(email, content) {
   $.post("/favorites/save/", {email: email, content: content}, function(data) {
-    console.log(data);
   })
 }
 
 $('document').ready(function(){
+  getVideos();
+  getSongs();
+  getQuotes();
+  setTimeout(function(){
+    randomContent();
+  }, 2000);
+});
+
 $("#saved").on("click", function(){
   $("#favSongs tr:not(:first-child)").remove();
   $("#favVideos tr:not(:first-child)").remove();
   $("#favQuotes tr:not(:first-child)").remove();
   getFavorites(currentUser);
 });
-$("#favVideos").on("click", "tr:not(:first-child)", function() {
- var clickedSavedContent = $(this).children("td:first-child");
-  console.log(clickedSavedContent.text());
-  console.log(this);
-  emptyContent();
-  setTimeout(function(){
-     youtubeAPI(clickedSavedContent.text());   
-     $('.content').fadeIn(700);
-  }, 800); 
-});
-$("#favSongs").on("click", "tr:not(:first-child)", function() {
+
+$("#favVideos, #favQuotes, #favSongs").on("click", "tr:not(:first-child)", function() {
   var clickedSavedContent = $(this).children("td:first-child");
-  console.log(clickedSavedContent.text());
-  console.log(this);
   emptyContent();
-  setTimeout(function(){
-     spotifyAPI(clickedSavedContent.text());   
-     $('.content').fadeIn(700);
-  }, 800); 
+  var table = $(this).parentsUntil(".panel", "table");
+  var contentType = table[0].id;
+  setTimeout( function() {
+    switch(contentType) {
+      case "favVideos":
+        youtubeAPI(clickedSavedContent.text());   
+        break;
+      case "favSongs":
+        spotifyAPI(clickedSavedContent.text());
+        break;
+      case "favQuotes":
+        quotesAPI(clickedSavedContent.text());
+        break;   
+    }
+    $('.content').fadeIn(700);
+  }, 800);  
 });
-$("#favQuotes").on("click", "tr:not(:first-child)", function() {
- var clickedSavedContent = $(this).children("td:first-child");
-  console.log(clickedSavedContent.text());
-  console.log(this);
-  emptyContent();
-  setTimeout(function(){
-     quotesAPI(clickedSavedContent.text());   
-     $('.content').fadeIn(700);
-  }, 800); 
-});
-});
-//saveContent('test@gmail.com','eqhUHyVpAwE');
-//newData();
