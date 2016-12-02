@@ -8,10 +8,10 @@ router.get('/:email', function(req, res) {
   models.User.findOne({ where: {email: req.params.email}})
   .then(function(userInstance) {
     user = userInstance;
-      user.getUsersmeta().then(function(instance) {
-        res.json(instance);
-      });
-    })
+    user.getUsersmeta().then(function(instance) {
+      res.json(instance);
+    });
+})
 });
 
 router.post("/save", function(req, res) {
@@ -22,10 +22,10 @@ router.post("/save", function(req, res) {
     user = userInstance;
     models.Usersmeta.findOne({ where: { content: req.body.content}})
     .then(function(contentInstance) {
-        content = contentInstance;
-        user.addUsersmeta([content]).then(function(instance) {
-          res.json(instance);
-        });
+      content = contentInstance;
+      user.addUsersmeta([content]).then(function(instance) {
+        res.json(instance);
+      });
     });
   })
 });

@@ -511,7 +511,7 @@ div.panel.show {
 }
 
 /*box shadow*/
-.content #player {
+.content #youtubeplayer {
     -moz-box-shadow: 0 0 20px #ff0000;
     -webkit-box-shadow: 0 0 20px #ff0000;
     box-shadow: 0 0 20px #ff0000;
@@ -529,7 +529,7 @@ div.panel.show {
     -webkit-box-shadow: 0 0 20px #47D9BF;
     box-shadow: 0 0 20px #47D9BF;
 }
-iframe {
+.content #spotifyplayer {
     -moz-box-shadow: 0 0 20px #00A1D9;
     -webkit-box-shadow: 0 0 20px #00A1D9;
     box-shadow: 0 0 20px #00A1D9;
