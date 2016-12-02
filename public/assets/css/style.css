@@ -360,16 +360,16 @@ div.panel.show {
 }
 /*cms*/
 #title, #title2 {
-    font-size: 30px;
-    font-weight: 200;
+    font-size: 33px;
+    font-weight: 300px;
     text-shadow: 1px 1px 1px #000, 
                3px 3px 5px #c8c8c8;
-    color: #00A1D9;
+    color: #00e6ac;
 }
 
 #title2{
-  margin-top: 50px;
-  color: #ff0000;
+  margin-top: 60px;
+/*  color: #00e6ac;*/
 }
 #exampleInputEmail1, #exampleInputPassword1 {
   margin-top: 25px;
