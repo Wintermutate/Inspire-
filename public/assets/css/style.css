@@ -517,9 +517,10 @@ div.panel.show {
     box-shadow: 0 0 20px #ff0000;
 }
 .content #quote {
-    -moz-box-shadow: 0 0 20px #003056;
-    -webkit-box-shadow: 0 0 20px #003056;
-    box-shadow: 0 0 20px #003056;
+    margin-top: 20px;
+    -moz-box-shadow: 0 0 40px #003056;
+    -webkit-box-shadow: 0 0 40px #003056;
+    box-shadow: 0 0 40px #003056;
 }
 .content .image {
     /*height: 300px;
@@ -538,6 +539,7 @@ iframe {
 .btn-sm {
   background-color: transparent;
 }
+/*something here*/
 
 /* Global Button Styles */
 a.animated-button:link, a.animated-button:visited {

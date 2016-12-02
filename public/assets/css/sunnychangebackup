@@ -1,0 +1,50 @@
+notes
+app.js
+160-167
+  emptyContent();
+  setTimeout(function(){
+    for(i=0;i<APIArray.length;i++){
+    APIArray[i]();
+    console.log(APIArray[i]);
+   }
+     $('.content').fadeIn(700);
+  }, 700);
+
+
+index.html
+169-171
+                            <div id="player"></div>
+                            <p id="quote"></p>
+                            <img src="" class="image"
+
+style. css
+513-540
+
+/*box shadow*/
+.content #player {
+    -moz-box-shadow: 0 0 20px #ff0000;
+    -webkit-box-shadow: 0 0 20px #ff0000;
+    box-shadow: 0 0 20px #ff0000;
+}
+.content #quote {
+    -moz-box-shadow: 0 0 20px #003056;
+    -webkit-box-shadow: 0 0 20px #003056;
+    box-shadow: 0 0 20px #003056;
+}
+.content .image {
+    /*height: 300px;
+    width: 300px;*/
+    vertical-align: top;
+    -moz-box-shadow: 0 0 20px #47D9BF;
+    -webkit-box-shadow: 0 0 20px #47D9BF;
+    box-shadow: 0 0 20px #47D9BF;
+}
+iframe {
+    -moz-box-shadow: 0 0 20px #00A1D9;
+    -webkit-box-shadow: 0 0 20px #00A1D9;
+    box-shadow: 0 0 20px #00A1D9;
+}
+
+.btn-sm {
+  background-color: transparent;
+}
