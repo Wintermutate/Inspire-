@@ -13,6 +13,7 @@ var currentUser ="random@random.com";
 var currentUserContent;
 var map;
 var currentPos;
+var markers = [];
 
 var APIArray = [youtubeAPI, quotesAPI, imageAPI, spotifyAPI];
 
@@ -94,7 +95,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
 }
 
-var markers = [];
+
 function addMarker(location, map, urlname, groupInfo) {
   // Add the marker at the clicked location, and add the next-available label
   // from the array of alphabetical characters.
@@ -282,6 +283,15 @@ $("#overload").on("click", function (){
      $('.content').fadeIn(700);
   }, 1000);
 });
+
+$("#submit-btn").on("click", function(){
+  var contentInput = $("#contentInput").val().trim();
+  var contentInputType = $("#contentInputType").val().trim();
+  newData(contentInput, contentInputType);
+  $("#contentInput").val("");
+  $("#contentInputType").val("");
+});
+
 // Retrive 'youtube' content
 function getVideos(){
   $.get("/content/youtube", function(data){
