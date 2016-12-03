@@ -30,5 +30,10 @@
     "require": "^2.4.20",
     "sequelize": "^3.27.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "should": "^11.1.1",
+    "supertest": "^2.0.1"
+  }
 }

@@ -296,6 +296,7 @@ $("#submit-btn").on("click", function(){
 function getVideos(){
   $.get("/content/youtube", function(data){
     vidArray = data;
+    console.log(data);
   })
 }
 
