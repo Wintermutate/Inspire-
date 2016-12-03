@@ -66,7 +66,7 @@ describe("post route for saves", function(){
 	it("/save should add content to user favorite table", function(done){
 		server
 		.post("/new")
-		.send({content:"I have a dream... - Martin Luther King Jr.", contentType:"quotes"})
+		.send({email:"random@random.com", content:"2nBI3iWLhupR7LyAJ5GGkE"})
 		.expect(200)
 		.expect("Content-type", /json/)
 		.end(function(err,res){
